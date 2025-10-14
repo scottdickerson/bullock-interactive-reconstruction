@@ -12,8 +12,8 @@ const Navigation: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="text-xl font-bold text-gray-900 hover:text-gray-700"
               >
                 Bullock Interactive

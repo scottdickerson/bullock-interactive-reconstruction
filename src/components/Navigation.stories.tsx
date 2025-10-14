@@ -9,7 +9,7 @@ const meta: Meta<typeof Navigation> = {
     layout: 'fullscreen',
   },
   decorators: [
-    (Story) => (
+    Story => (
       <BrowserRouter>
         <Story />
       </BrowserRouter>
@@ -24,7 +24,7 @@ export const Default: Story = {};
 
 export const WithBackground: Story = {
   decorators: [
-    (Story) => (
+    Story => (
       <BrowserRouter>
         <div style={{ backgroundColor: '#f3f4f6', minHeight: '200px' }}>
           <Story />

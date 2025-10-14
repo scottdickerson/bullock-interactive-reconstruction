@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
@@ -8,7 +8,7 @@ import { usePageTracking } from './hooks/usePageTracking';
 
 function AppContent() {
   usePageTracking();
-  
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

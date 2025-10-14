@@ -2,8 +2,8 @@ import ReactGA from 'react-ga4';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    gtag: (...args: unknown[]) => void;
+    dataLayer: Record<string, unknown>[];
   }
 }
 
@@ -23,13 +23,21 @@ export const trackPageView = (path: string) => {
   }
 };
 
-export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const trackEvent = (
+  eventName: string,
+  parameters?: Record<string, unknown>
+) => {
   if (GA_TRACKING_ID) {
     ReactGA.event(eventName, parameters);
   }
 };
 
-export const trackCustomEvent = (action: string, category: string, label?: string, value?: number) => {
+export const trackCustomEvent = (
+  action: string,
+  category: string,
+  label?: string,
+  value?: number
+) => {
   if (GA_TRACKING_ID) {
     ReactGA.event({
       action,
