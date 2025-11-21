@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 // @ts-ignore - vite-plugin-eslint has type issues
 import eslint from 'vite-plugin-eslint';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -15,7 +16,7 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), eslint()],
+  plugins: [react(), eslint(), tailwindcss()],
   test: {
     projects: [
       {

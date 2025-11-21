@@ -4,23 +4,23 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md,astro}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md,astro}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.3.3",
+    "@astrojs/react": "^4.4.2",
+    "astro": "^5.16.0",
     "gtag": "^1.0.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-ga4": "^2.1.0",
-    "react-router-dom": "^7.9.4"
+    "react-ga4": "^2.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
@@ -31,6 +31,7 @@
     "@storybook/addon-vitest": "^9.1.10",
     "@storybook/react-vite": "^9.1.10",
     "@tailwindcss/postcss": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
@@ -52,7 +53,7 @@
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "storybook": "^9.1.10",
-    "tailwindcss": "^4.1.14",
+    "tailwindcss": "^4.0.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7",

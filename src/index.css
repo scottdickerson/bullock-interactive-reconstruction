@@ -1,6 +1,144 @@
-@tailwind base;
-@tailwind components;
+@import 'tailwindcss';
 @tailwind utilities;
+
+/* CSS View Transitions */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(content) {
+  animation-name: fade-out;
+}
+
+::view-transition-new(content) {
+  animation-name: fade-in;
+}
+
+::view-transition-old(politics-woodblock),
+::view-transition-new(politics-woodblock) {
+  animation-name: exit-left;
+}
+
+::view-transition-old(education-woodblock),
+::view-transition-new(education-woodblock) {
+  animation-name: exit-down;
+}
+
+::view-transition-old(community-leadership-woodblock),
+::view-transition-new(community-leadership-woodblock) {
+  animation-name: exit-right;
+}
+
+::view-transition-old(politics-woodblock-in),
+::view-transition-new(politics-woodblock-in) {
+  animation-name: enter-left;
+}
+
+::view-transition-old(education-woodblock-in),
+::view-transition-new(education-woodblock-in) {
+  animation-name: enter-down;
+}
+
+::view-transition-old(community-leadership-woodblock-in),
+::view-transition-new(community-leadership-woodblock-in) {
+  animation-name: enter-right;
+}
+
+/* Fade out class for screen transitions */
+.screen-fade-out {
+  animation: fade-out 0.6s ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Woodblock exit animations */
+@keyframes exit-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exit-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes exit-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes enter-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enter-down {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enter-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 body {
   margin: 0;
@@ -19,4 +157,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }

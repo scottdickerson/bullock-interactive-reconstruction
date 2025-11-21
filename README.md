@@ -1,173 +1,107 @@
 # Bullock Interactive Reconstruction
 
-A modern React TypeScript application built with Vite, featuring React Router, Tailwind CSS, Storybook, and Google Analytics integration.
+An interactive web application showcasing the Reconstruction era in Texas, built with React, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## Features
 
-- **React 18** with TypeScript for type safety
-- **Vite** for fast development and building
-- **React Router v6** for client-side routing
-- **Tailwind CSS** for utility-first styling
-- **Storybook** for component documentation and testing
-- **Google Analytics 4** for analytics tracking
-- **ESLint + Prettier** for code quality and formatting
-- **Vercel** deployment ready
+### Three Main Screens
 
-## 📦 Installation
+1. **Pullscreen** (`/`) - The landing page with:
+   - Purple gradient background
+   - Three animated woodblocks (Education, Politics, Community Leadership)
+   - Main title "RECOUNTING RECONSTRUCTION"
+   - Subtitle and description text
+   - START button to proceed to Screen2
+   - Spanish language toggle button
+
+2. **Screen2** (`/screen2`) - Category selection page with:
+   - Same purple background
+   - Animated woodblocks that slide out when navigating from Pullscreen
+   - Five category buttons: Community/Religious Leadership, Agriculture, Politics, Education, Entrepreneurship
+   - Navigation buttons (HOME, Español)
+   - Woodblocks only animate when coming from previous screen, not from back button
+
+3. **Screen3** (`/screen3`) - Detailed content page with:
+   - Expandable text options (New Opportunities, Challenges and Dangers, View Artifact)
+   - Dynamic content based on selected category
+   - Woodblock background (only when coming from previous screen)
+   - Navigation buttons (HOME, BACK, Español)
+   - Expandable content with images and detailed descriptions
+
+### Technical Implementation
+
+- **CSS View Transitions**: Smooth fade-in/fade-out transitions between pages
+- **Woodblock Animations**: Custom animations for woodblocks sliding out of frame
+- **State Management**: React state to track navigation flow and expanded content
+- **Responsive Design**: Tailwind CSS for responsive layouts
+- **TypeScript**: Full type safety throughout the application
+
+### Navigation Flow
+
+1. Start at Pullscreen (`/`)
+2. Click START → Navigate to Screen2 (`/screen2`) with woodblocks animation
+3. Select category → Navigate to Screen3 (`/screen3`) with category-specific content
+4. Use BACK button → Return to Screen2 without woodblocks animation
+5. Use HOME button → Return to Pullscreen
+
+### Key Features
+
+- **Smart Woodblock Animation**: Woodblocks only animate when navigating forward, not when using back button
+- **Expandable Content**: Click on options in Screen3 to expand detailed content
+- **Category-Specific Content**: Different content based on selected category
+- **CSS View Transitions**: Smooth page transitions using modern CSS View Transitions API
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Development
 
 ```bash
+# Install dependencies
 npm install
-```
 
-## 🛠️ Development
-
-Start the development server:
-
-```bash
+# Start development server
 npm run dev
-```
 
-Start Storybook:
+# Build for production
+npm run build
 
-```bash
-npm run storybook
-```
-
-## 🧪 Testing
-
-Run Vitest tests:
-
-```bash
-npm run test
-```
-
-Run Storybook tests:
-
-```bash
-npx vitest --project=storybook
-```
-
-## 🔧 Code Quality
-
-Lint the code:
-
-```bash
+# Run linting
 npm run lint
-```
 
-Fix linting issues:
-
-```bash
-npm run lint:fix
-```
-
-Format code with Prettier:
-
-```bash
+# Format code
 npm run format
 ```
 
-Check formatting:
+## Technologies Used
 
-```bash
-npm run format:check
-```
+- React 19
+- TypeScript
+- Tailwind CSS
+- React Router DOM
+- CSS View Transitions API
+- Vite (build tool)
 
-## 🌍 Environment Variables
+## Browser Support
 
-Copy the example environment file and configure your variables:
+- Modern browsers with CSS View Transitions support
+- Chrome 111+
+- Firefox 103+
+- Safari 18+
 
-```bash
-cp .env.example .env.local
-```
-
-### Required Variables
-
-- `VITE_GA_TRACKING_ID`: Your Google Analytics 4 tracking ID (format: G-XXXXXXXXXX)
-
-## 🚀 Deployment
-
-### Vercel Deployment
-
-1. Install the Vercel CLI:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. Login to Vercel:
-   ```bash
-   vercel login
-   ```
-
-3. Deploy to Vercel:
-   ```bash
-   vercel
-   ```
-
-4. Set environment variables in Vercel dashboard:
-   - Go to your project settings
-   - Add `VITE_GA_TRACKING_ID` as an environment variable
-
-### Manual Build
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── Navigation.tsx
-│   └── *.stories.tsx   # Storybook stories
-├── hooks/              # Custom React hooks
-│   └── usePageTracking.ts
-├── pages/              # Route components
-│   ├── Home.tsx
-│   └── About.tsx
-├── utils/              # Utility functions
-│   └── analytics.ts    # Google Analytics utilities
-├── App.tsx             # Main application component
-├── main.tsx           # Application entry point
-└── index.css          # Global styles with Tailwind
+├── pages/
+│   ├── Pullscreen.tsx    # Landing page
+│   ├── Screen2.tsx       # Category selection
+│   ├── Screen3.tsx       # Detailed content
+│   ├── Home.tsx          # Original home page
+│   └── About.tsx         # About page
+├── components/
+│   └── Navigation.tsx    # Navigation component
+├── hooks/
+│   └── usePageTracking.ts # Analytics tracking
+├── utils/
+│   └── analytics.ts      # Google Analytics setup
+└── App.tsx               # Main app component
 ```
-
-## 🛠️ Technologies
-
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [React Router](https://reactrouter.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [React GA4](https://github.com/codler/react-ga4)
-
-## 📝 Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Lint code
-- `npm run lint:fix` - Fix linting issues
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
-- `npm run storybook` - Start Storybook
-- `npm run build-storybook` - Build Storybook for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
