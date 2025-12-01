@@ -3,7 +3,7 @@ import { selectScreenData } from '../data/content';
 
 const SelectScreen = () => {
   return (
-    <div className="relative w-full  overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* Main Content */}
       <div className="relative flex pt-20 pr-20 py-20">
         <div className="flex justify-between flex-1">
