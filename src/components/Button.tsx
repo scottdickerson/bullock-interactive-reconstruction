@@ -19,7 +19,7 @@ const Button = <T extends 'button' | 'a' = 'button'>({
   ...props
 }: ButtonProps<T>) => {
   const baseStyles =
-    'font-metropolis font-bold text-xl py-4 px-8 rounded-lg transition-all duration-300 shadow-lg';
+    'font-bold text-xl py-4 px-8 rounded-lg transition-all duration-300 shadow-lg';
 
   const variantStyles = {
     primary:
