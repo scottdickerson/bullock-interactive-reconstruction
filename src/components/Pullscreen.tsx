@@ -7,9 +7,11 @@ const Pullscreen = () => {
   };
 
   return (
-    <a
-      className="block relative w-full h-screen overflow-hidden"
-      href="/select"
+    <div
+      className="fixed inset-0 overflow-hidden"
+      onClick={() => {
+        window.location.href = '/select';
+      }}
     >
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
