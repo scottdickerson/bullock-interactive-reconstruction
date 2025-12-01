@@ -31,7 +31,7 @@ const Woodblocks = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end">
+    <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end z-0">
       {/* Politics Woodblock */}
       <div
         ref={politicsRef}

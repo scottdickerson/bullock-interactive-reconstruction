@@ -17,7 +17,7 @@ const NavigationButtons = ({
 }: NavigationButtonsProps) => {
   return (
     <div
-      className={`absolute bottom-0 left-0 right-0 flex justify-between ${className}`}
+      className={`absolute z-50 bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] ${className}`}
     >
       <div className="flex gap-4">
         {showBack && (

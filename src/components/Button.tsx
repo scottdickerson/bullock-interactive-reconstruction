@@ -17,7 +17,7 @@ const Button = <T extends 'button' | 'a' = 'button'>({
   ...props
 }: ButtonProps<T>) => {
   const baseStyles =
-    'font-metropolis font-bold rounded-lg transition-all duration-300 bg-black bg-opacity-40 backdrop-blur-sm border-4 border-yellow-400 text-button py-3 px-6 hover:bg-opacity-60';
+    'font-bold text-2xl z-40 rounded-lg leading-none transition-all duration-300 bg-black bg-opacity-40 backdrop-blur-sm border-4 border-yellow-400 text-button py-3 px-6 hover:bg-opacity-60';
 
   const combinedClassName = `${baseStyles} ${className}`;
 
