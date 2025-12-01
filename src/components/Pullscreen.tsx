@@ -1,4 +1,5 @@
 import Woodblocks from './Woodblocks';
+import Button from './Button';
 
 const Pullscreen = () => {
   const handleSpanishClick = () => {
@@ -7,18 +8,15 @@ const Pullscreen = () => {
   };
 
   return (
-    <a
-      className="block relative w-full h-screen overflow-hidden"
-      href="/select"
-    >
+    <div className="relative w-full h-screen overflow-hidden">
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-6xl md:text-8xl font-extrabold text-yellow-400 mb-4 drop-shadow-lg">
+          <h1 className="text-6xl md:text-8xl font-extrabold text-yellow-400 mb-4 drop-shadow-lg animate-float">
             RECOUNTING
           </h1>
-          <h1 className="text-6xl md:text-8xl font-extrabold text-yellow-400 drop-shadow-lg">
+          <h1 className="text-6xl md:text-8xl font-extrabold text-yellow-400 drop-shadow-lg animate-float">
             RECONSTRUCTION
           </h1>
         </div>
@@ -42,20 +40,21 @@ const Pullscreen = () => {
         </div>
 
         {/* Start Button */}
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+        <Button variant="primary" as="a" href="/select">
           START
-        </button>
+        </Button>
       </div>
       <Woodblocks />
 
       {/* Spanish Button */}
-      <button
+      <Button
+        variant="secondary"
         onClick={handleSpanishClick}
-        className="absolute top-8 right-8 bg-black bg-opacity-40 backdrop-blur-sm border-4 border-yellow-400 text-yellow-100 font-bold py-3 px-6 rounded-lg hover:bg-opacity-60 transition-all duration-300"
+        className="absolute top-8 right-8"
       >
         Español
-      </button>
-    </a>
+      </Button>
+    </div>
   );
 };
 
