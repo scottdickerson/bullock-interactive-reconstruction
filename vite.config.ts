@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-// @ts-ignore - vite-plugin-eslint has type issues
+// @ts-expect-error - vite-plugin-eslint has type issues
 import eslint from 'vite-plugin-eslint';
 import tailwindcss from '@tailwindcss/vite';
 

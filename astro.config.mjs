@@ -6,7 +6,13 @@ export default defineConfig({
   integrations: [react()],
   output: 'static',
   vite: {
-    assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg'],
+    assetsInclude: [
+      '**/*.png',
+      '**/*.jpg',
+      '**/*.jpeg',
+      '**/*.svg',
+      '**/*.woff2',
+    ],
     ssr: {
       noExternal: [],
     },
