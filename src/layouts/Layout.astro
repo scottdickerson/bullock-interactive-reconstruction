@@ -1,11 +1,14 @@
 ---
 import Analytics from '../components/Analytics';
+import NavigationButtonsWrapper from '../components/NavigationButtonsWrapper';
+
 interface Props {
   title?: string;
   pathname?: string;
 }
 
 const { title = 'Bullock Interactive Reconstruction'} = Astro.props;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -18,15 +21,17 @@ const { title = 'Bullock Interactive Reconstruction'} = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="pl-40 pb-24 pr-16 h-svh text-pretty">
     <Analytics client:load />
     <div
     class="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: `url(/background.png)` }}
   ></div>
-    <div class="[view-transition-name:content]">
+    <div class="[view-transition-name:content] relative h-full">
       <slot />
+      <NavigationButtonsWrapper pathname={pathname} />
     </div>
+   
   </body>
 </html>
 

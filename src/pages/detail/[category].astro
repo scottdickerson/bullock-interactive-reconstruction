@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DetailScreen from '../../components/DetailScreen';
+import { selectScreenData } from '../../data/content';
+
+export function getStaticPaths() {
+  return selectScreenData.categories.map(category => {
+    const categorySlug = category.name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/\//g, '-');
+    
+    return {
+      params: { category: categorySlug },
+    };
+  });
+}
+
+const { category } = Astro.params;
+---
+
+<Layout title="Reconstruction Era Texans - Details">
+  <DetailScreen category={category || 'agriculture'} client:load />
+</Layout>
+

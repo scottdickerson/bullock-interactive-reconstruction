@@ -31,7 +31,7 @@ const Woodblocks = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end">
+    <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end z-0">
       {/* Politics Woodblock */}
       <div
         ref={politicsRef}
@@ -70,7 +70,7 @@ const Woodblocks = () => {
         style={{
           viewTransitionName: `community-leadership-woodblock${viewTransitionSuffix}`,
         }}
-        className="mix-blend-multiply max-w-[975px] translate-x-[200px] transition-all duration-1000 ease-in-out"
+        className="mix-blend-multiply max-w-[800px] translate-x-[210px] transition-all duration-1000 ease-in-out"
         id="community-leadership-woodblock"
       >
         <img
