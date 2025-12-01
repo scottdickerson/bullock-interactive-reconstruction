@@ -150,6 +150,9 @@
 @theme {
   --font-family-metropolis: 'Metropolis', sans-serif;
   --animate-float: float 3.5s ease-in-out infinite;
+  --color-details: #f2efe1;
+  --color-button: #f2efe1;
+  --color-pullscreen-text: #e6ddc8;
 }
 
 /* CSS View Transitions */
@@ -169,6 +172,20 @@
 
 ::view-transition-new(content) {
   animation-name: fade-in;
+}
+
+::view-transition-group(politics-woodblock),
+::view-transition-group(education-woodblock),
+::view-transition-group(community-leadership-woodblock),
+::view-transition-group(politics-woodblock-in),
+::view-transition-group(education-woodblock-in),
+::view-transition-group(community-leadership-woodblock-in) {
+  z-index: 1;
+}
+
+::view-transition-group(navigation-buttons),
+::view-transition-group(start-button) {
+  z-index: 100;
 }
 
 ::view-transition-old(politics-woodblock),
@@ -302,10 +319,6 @@
   }
 }
 
-.animate-float {
-  animation: float 3.5s ease-in-out infinite;
-}
-
 body {
   margin: 0;
   font-family:
@@ -325,4 +338,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  color: var(--color-details);
 }
