@@ -150,6 +150,8 @@
 @theme {
   --font-family-metropolis: 'Metropolis', sans-serif;
   --animate-float: float 3.5s ease-in-out infinite;
+  --color-details: #f2efe1;
+  --color-button: #f2efe1;
 }
 
 /* CSS View Transitions */
@@ -302,10 +304,6 @@
   }
 }
 
-.animate-float {
-  animation: float 3.5s ease-in-out infinite;
-}
-
 body {
   margin: 0;
   font-family:
@@ -325,4 +323,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  color: var(--color-details);
 }

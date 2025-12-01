@@ -1,14 +1,10 @@
 import Woodblocks from './Woodblocks';
 import Button from './Button';
+import arrowRight from '../assets/icon-arrow.svg?url';
 
 const Pullscreen = () => {
-  const handleSpanishClick = () => {
-    // TODO: Implement Spanish language toggle
-    console.log('Spanish button clicked');
-  };
-
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="fixed inset-0 overflow-hidden">
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
         {/* Title */}
@@ -40,20 +36,11 @@ const Pullscreen = () => {
         </div>
 
         {/* Start Button */}
-        <Button variant="primary" as="a" href="/select">
-          START
+        <Button as="a" href="/select" className="flex items-center gap-2">
+          START <img src={arrowRight} alt="Arrow Right" className="w-4 h-4" />
         </Button>
       </div>
       <Woodblocks />
-
-      {/* Spanish Button */}
-      <Button
-        variant="secondary"
-        onClick={handleSpanishClick}
-        className="absolute top-8 right-8"
-      >
-        Español
-      </Button>
     </div>
   );
 };
