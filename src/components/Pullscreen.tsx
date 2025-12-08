@@ -15,10 +15,10 @@ const Pullscreen = () => {
         <div className="max-w-[934px]">
           {/* Title */}
           <div className="text-center mb-8">
-            <h1 className="text-[100px] leading-none  font-extrabold text-yellow-400 drop-shadow-lg animate-float">
+            <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
               RECOUNTING
             </h1>
-            <h1 className="text-[100px] leading-none  font-extrabold text-yellow-400 drop-shadow-lg animate-float">
+            <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
               RECONSTRUCTION
             </h1>
           </div>

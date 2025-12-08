@@ -10,7 +10,7 @@ const SelectScreen = () => {
           {/* Header */}
           <div className="basis-[40%] mt-[20vh]">
             <div className="pr-24">
-              <h1 className="text-4xl font-bold text-yellow-400 mb-4 ">
+              <h1 className="text-4xl font-bold text-yellow mb-4 ">
                 {selectScreenData.name}
               </h1>
               <p className="text-xl font-bold mb-10 leading-none pr-4">

@@ -29,7 +29,7 @@ const NavigationButtons = ({
                 clipRule="evenodd"
               />
             </svg>
-            BACK
+            <span className="text-details">BACK</span>
           </Button>
         )}
         {showHome && (
