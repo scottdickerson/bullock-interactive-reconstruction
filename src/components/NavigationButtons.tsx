@@ -17,11 +17,15 @@ const NavigationButtons = ({
 }: NavigationButtonsProps) => {
   return (
     <div
-      className={`absolute z-50 bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] ${className}`}
+      className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} `}
     >
       <div className="flex gap-4">
         {showBack && (
-          <Button as="a" href={backHref} className="flex items-center gap-2">
+          <Button
+            as="a"
+            href={backHref}
+            className="flex items-center gap-2 z-30"
+          >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"

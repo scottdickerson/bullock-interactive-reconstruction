@@ -23,7 +23,7 @@ const CategorySelectButton = ({
       />
 
       {/* Blur Overlay - positioned as sibling to blur the background image */}
-      <div className="absolute inset-4 backdrop-blur-[2px] z-10 bg-black/50 rounded-lg border-4 border-yellow "></div>
+      <div className="absolute inset-4 backdrop-blur-[2px] z-10 bg-[rgb(0,0,0,0.4)] rounded-lg border-4 border-yellow "></div>
 
       {/* Content Overlay */}
       <div className="relative z-20 flex items-center justify-center h-full p-18 ">

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import CategoryTag from './CategoryTag';
 import CategoryOptionButton from './CategoryOptionButton';
-import ExpandedContent from './ExpandedContent';
 import { contentData, type ContentData } from '../data/content';
 
 interface DetailScreenProps {
@@ -42,7 +41,7 @@ const DetailScreen = ({
   const content = contentData[category];
 
   return (
-    <div className="relative h-full px-8 py-8 flex gap-8">
+    <div className="relative h-full px-8 flex gap-8">
       {/* Category Tag - Fixed Positioned */}
       <div className="fixed top-8 left-40 z-10">
         <CategoryTag category={category} />
@@ -57,11 +56,14 @@ const DetailScreen = ({
       </div>
 
       {/* Options */}
-      <div className="basis-1/2 px-10 relative">
+      <div
+        className={`basis-1/2  relative mr-40 ${!expandedOption ? 'pt-10' : ''}`}
+      >
         {/* Right Column - Options */}
-        {!expandedOption && (
-          <div className="flex flex-col gap-4">
-            {Object.entries(content.options).map(([key, option]) => (
+        <div className="flex flex-col gap-4 relative">
+          {Object.entries(content.options)
+            .filter(([key]) => !expandedOption || expandedOption === key)
+            .map(([key, option]) => (
               <CategoryOptionButton
                 key={key}
                 option={option}
@@ -69,18 +71,10 @@ const DetailScreen = ({
                 onClick={() =>
                   handleOptionClick(key as keyof ContentData['options'])
                 }
+                onClose={handleClose}
               />
             ))}
-          </div>
-        )}
-
-        {/* Right Column - Expanded Content Display */}
-        {expandedOption && (
-          <ExpandedContent
-            option={content.options[expandedOption]}
-            onClose={handleClose}
-          />
-        )}
+        </div>
       </div>
     </div>
   );
