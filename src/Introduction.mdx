@@ -1,0 +1,244 @@
+# Bullock Interactive Reconstruction
+
+## Project Overview
+
+An interactive web application showcasing the Reconstruction era in Texas, featuring historical narratives, artifacts, and educational content about Black Texans during this pivotal period in American history.
+
+## Architecture
+
+### Core Technologies
+
+This project uses a **hybrid architecture** that combines the best of static site generation with interactive React components:
+
+- **Astro** - Handles routing, static site generation, and page structure
+- **React 19** - Powers interactive components and UI elements
+- **TypeScript** - Provides type safety throughout the codebase
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **Storybook** - Component documentation and visual testing
+
+### Why This Architecture?
+
+**Astro for Routing:**
+
+- Static site generation for optimal performance
+- File-based routing with dynamic routes (`[category].astro`)
+- Server-side rendering capabilities
+- Excellent SEO and fast initial page loads
+
+**React for Components:**
+
+- Rich interactive UI components
+- Client-side state management
+- Reusable component library
+- Smooth animations and transitions
+
+**Storybook for Documentation:**
+
+- Isolated component development
+- Visual regression testing
+- Component API documentation
+- Design system documentation
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/            # Base UI components (dialog, etc.)
+│   └── *.tsx          # Feature components
+├── screens/           # Full-page screen components
+├── pages/             # Astro pages (routing)
+│   └── detail/        # Dynamic category routes
+├── layouts/           # Astro layout templates
+├── data/              # Content data and types
+├── utils/             # Utility functions and helpers
+└── assets/            # Static assets (SVGs, etc.)
+```
+
+## Key Features
+
+### 1. Category-Based Navigation
+
+The application is organized around five main categories:
+
+- **Agriculture** - Ransom and Sarah Williams
+- **CommunityLeadership** - Nace Duval
+- **Politics** - Richard Allen
+- **Education** - Harriet Smith
+- **Entrepreneurship** - Hope Thompson
+
+Each category has:
+
+- A detail page with expandable content options
+- Three content types: "New Opportunities", "Challenges and Dangers", and "View Artifact"
+- Artifact zoom functionality for detailed image viewing
+
+### 2. Component Architecture
+
+**Reusable Components:**
+
+- **`FadeInModal`** - Base modal component that handles fade-in and fade-out transitions. Wraps Radix UI Dialog to provide smooth opacity animations. Used by `ArtifactZoomDialog` to create fullscreen modals with delayed fade-in effects. Manages internal state to ensure animations work correctly even when the component is removed from the DOM.
+
+- **`ArtifactZoomDialog`** - Fullscreen dialog for viewing artifact images in detail. Built on top of `FadeInModal` with a fullscreen variant. Used in `ExpandedContent` when users click on artifact images (only shown for "View Artifact" options). Displays the artifact image centered with a close button positioned relative to the image at the bottom right.
+
+- **`ExpandedContent`** - Displays the expanded content when a detail option is clicked. Used inside `DetailOptionButton` to show the full content including images, descriptions, and text. Features fade-in/out animations synchronized with the button expansion. For artifact options, it shows a zoom icon overlay and opens `ArtifactZoomDialog` when the image is clicked. Includes a close button at the bottom center.
+
+- **`DetailOptionButton`** - Interactive button component used in `DetailScreen` to display the three content options (New Opportunities, Challenges and Dangers, View Artifact). Features smooth expand/collapse animations with position transitions. When collapsed, buttons are positioned at fixed vertical positions. When expanded, the button fills the container and shows `ExpandedContent`. Only one button can be expanded at a time.
+
+- **`Button`** - Versatile button component that can render as either a `<button>` or `<a>` element. Used throughout the application for navigation and actions:
+  - `Pullscreen`: START button to navigate to category selection
+  - `NavigationButtons`: HOME, BACK, and Español buttons
+  - `ExpandedContent`: Close button for collapsing expanded content
+  - `InactivityModal`: HOME and KEEP READING buttons
+    Features consistent yellow border styling with backdrop blur and hover effects.
+
+- **`CategorySelectButton`** - Clickable category selection button used in `SelectScreen` to display available categories. Renders as an anchor element with a category background image, blurred overlay, and category name. Features hover effects (scale and color transitions) and automatically generates the correct href and image URL based on the category enum. Used in a 2-column grid layout on the category selection page.
+
+- **`CategoryTag`** - Fixed-position category indicator displayed at the top-left of `DetailScreen`. Shows the current category name with a yellow background and purple text. Positioned using fixed positioning to remain visible while scrolling. Used to provide visual context about which category the user is currently viewing.
+
+- **`InactivityModal`** - User activity monitoring modal that appears after periods of inactivity. Tracks user interactions (mouse clicks, keyboard presses, touch events) and displays a modal after 60 seconds of inactivity (configurable). The modal shows an animated countdown timer and prompts the user to either continue reading or return home. If no action is taken within 15 seconds, the modal automatically navigates to the home page. Only appears on pages other than the pullscreen (landing page). Uses a higher z-index (`z-[60]`) to ensure it appears above other modals like the artifact zoom dialog. Wrapped by `InactivityModalWrapper` which conditionally renders it based on the current pathname.
+
+**Screen Components:**
+
+- `Pullscreen` - Landing page
+- `SelectScreen` - Category selection that takes you to the detail screen for each of the categories of content
+- `DetailScreen` - Shows additional content for the selected category and allows users to view artifacts related to the category.
+
+### 3. Inactivity Monitoring
+
+The application includes an inactivity monitoring system to help manage user sessions and provide a smooth experience:
+
+**How It Works:**
+
+- **Activity Tracking**: Monitors user interactions including mouse clicks, keyboard presses, and touch events across all pages (except the pullscreen landing page).
+
+- **Inactivity Timer**: After 60 seconds of no user activity, the `InactivityModal` automatically appears with an animated countdown timer.
+
+- **User Options**: When the modal appears, users can:
+  - Click "KEEP READING" to dismiss the modal and reset the inactivity timer
+  - Click "HOME" to navigate back to the landing page
+  - Do nothing, which will auto-navigate to home after 15 seconds
+
+- **Auto-Navigation**: If the user doesn't interact with the modal within 15 seconds, the application automatically navigates to the home page to reset the session.
+
+- **Modal Priority**: The inactivity modal uses a higher z-index (`z-[60]`) than other modals (like the artifact zoom dialog at `z-50`) to ensure it always appears on top when triggered.
+
+- **Smart Reset**: Any user activity (clicks, keyboard input, touches) resets the inactivity timer, preventing the modal from appearing during active use.
+
+This system helps ensure users don't lose their place if they step away, while also providing a way to reset the experience if needed.
+
+### 4. State Management
+
+- React hooks (`useState`, `useEffect`, `useRef`) for component state
+- URL-based routing for navigation state
+- Local component state for UI interactions (modals, expansions)
+
+### 5. Styling Approach
+
+- **Tailwind CSS** for utility-first styling
+- Custom CSS variables for theme colors
+- Responsive design with mobile-first approach
+- Custom animations and transitions
+
+## Development Workflow
+
+### Running the Application
+
+```bash
+# Development server (Astro)
+npm run dev
+
+# Storybook (Component documentation)
+npm run storybook
+
+# Build for production
+npm run build
+```
+
+### Code Quality
+
+- **ESLint** - Code linting with TypeScript support
+- **Prettier** - Code formatting
+- **TypeScript** - Type checking
+- **Vitest** - Unit testing (configured in Storybook)
+
+### Component Development
+
+1. Create component in `src/components/`
+2. Add Storybook stories in `*.stories.tsx`
+3. Document component API and usage
+4. Test in isolation using Storybook
+5. Integrate into Astro pages
+
+## Key Patterns
+
+### Type Safety
+
+- TypeScript enums for categories (`Category` enum)
+- Strongly typed content data structures
+- Type-safe utility functions
+
+### Component Composition
+
+- Small, focused components
+- Composition over inheritance
+- Reusable UI primitives (from `ui/` directory)
+
+### Performance
+
+- Static site generation for fast loads
+- Code splitting via Astro
+- Optimized images and assets
+- CSS transitions for smooth animations
+
+## Dependencies
+
+### Core
+
+- `astro` - Static site framework
+- `react` & `react-dom` - UI library
+- `@astrojs/react` - React integration for Astro
+
+### UI Components
+
+- `@radix-ui/react-dialog` - Accessible dialog primitives
+- `classnames` - Conditional className utility
+- `clsx` & `tailwind-merge` - Class name utilities
+
+### Styling
+
+- `tailwindcss` - CSS framework
+- `@tailwindcss/vite` - Vite integration
+
+### Analytics
+
+- `react-ga4` - Google Analytics 4 integration
+- `gtag` - Google Tag Manager
+
+### Development
+
+- `storybook` - Component documentation
+- `vitest` - Testing framework
+- `typescript` - Type system
+
+## Browser Support
+
+- Modern browsers with ES2022 support
+- CSS View Transitions API support (Chrome 111+, Firefox 103+, Safari 18+)
+- Progressive enhancement approach
+
+## Deployment
+
+- **Vercel** - Hosting platform (configured in `vercel.json`)
+- Static site generation for optimal performance
+- Environment variables for analytics configuration
+
+## Additional Resources
+
+- Component stories are available in the sidebar
+- Each component includes usage examples and API documentation
+- Check individual component stories for detailed usage instructions
+
+---
+
+_This documentation is maintained alongside the codebase. For questions or contributions, refer to the project repository._

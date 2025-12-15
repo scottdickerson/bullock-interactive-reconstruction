@@ -2,6 +2,7 @@ import {
   Category,
   getCategoryImageUrl,
   getCategoryHref,
+  categoryNames,
 } from '../utils/categories';
 
 /**
@@ -46,7 +47,7 @@ const CategorySelectButton = ({
       {/* Content Overlay */}
       <div className="relative z-20 flex items-center justify-center h-full p-18 ">
         <h3 className="text-2xl font-bold text-button group-hover:text-yellow transition-colors text-center">
-          {category.split('/').join('/ ')}
+          {categoryNames[category]}
         </h3>
       </div>
     </a>

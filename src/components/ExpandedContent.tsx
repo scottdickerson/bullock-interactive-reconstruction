@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import classNames from 'classnames';
 import Button from './Button';
 import {
   isContentOption,
   type ContentOption,
   type ArtifactOption,
+  ContentDataOptionEnum,
 } from '../data/content';
 import closeIcon from '../assets/icon-close.svg?url';
+import zoomIcon from '../assets/zoom.svg?url';
+import type { Category } from '../utils/categories';
+import { getCategoryArtifactUrl } from '../utils/categories';
+import ArtifactZoomDialog from './ArtifactZoomDialog';
 
 /**
  * Props for the ExpandedContent component
@@ -17,6 +23,8 @@ interface ExpandedContentProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
   /** Whether the content is currently expanded */
   isExpanded: boolean;
+  /** The current category */
+  category: Category;
 }
 
 /**
@@ -32,8 +40,15 @@ const ExpandedContent = ({
   option,
   onClose,
   isExpanded,
+  category,
   ...props
 }: ExpandedContentProps) => {
+  const [isZoomDialogOpen, setIsZoomDialogOpen] = useState(false);
+  const isArtifactOption = option.title === ContentDataOptionEnum.View_Artifact;
+  const artifactImageUrl = isArtifactOption
+    ? getCategoryArtifactUrl(category)
+    : null;
+
   return (
     <div
       className={classNames(
@@ -52,17 +67,31 @@ const ExpandedContent = ({
       }}
       {...props}
     >
-      <div className="p-6  border-4 border-yellow rounded-lg h-full pt-10">
+      <div className="p-6 border-4 border-yellow rounded-lg h-full pt-10">
         <h3 className="text-2xl font-bold text-yellow mb-10 text-center">
           {option.title}
         </h3>
         <div className="mb-24 mx-16">
           {option.imageUrl ? (
-            <img
-              src={option.imageUrl}
-              alt={option.title}
-              className=" h-[390px] object-cover rounded-lg mb-4 bg-black aspect-ratio-[831/1156]"
-            />
+            <div
+              className={classNames('relative', {
+                'cursor-pointer': isArtifactOption,
+              })}
+              onClick={() => isArtifactOption && setIsZoomDialogOpen(true)}
+            >
+              <img
+                src={option.imageUrl}
+                alt={option.title}
+                className=" h-[390px] object-cover rounded-lg mb-4 bg-black aspect-ratio-[831/1156]"
+              />
+              {isExpanded && isArtifactOption && (
+                <img
+                  src={zoomIcon}
+                  alt="Zoom"
+                  className="absolute bottom-[30px] right-[34px] pointer-events-none "
+                />
+              )}
+            </div>
           ) : (
             <div className="w-full h-64 rounded-lg mb-4 opacity-80"></div>
           )}
@@ -100,6 +129,14 @@ const ExpandedContent = ({
           <img src={closeIcon} alt="Close" />
         </Button>
       </div>
+      {isArtifactOption && artifactImageUrl && (
+        <ArtifactZoomDialog
+          isOpen={isZoomDialogOpen}
+          onOpenChange={setIsZoomDialogOpen}
+          imageUrl={artifactImageUrl}
+          alt={option.title}
+        />
+      )}
     </div>
   );
 };

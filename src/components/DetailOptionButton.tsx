@@ -1,12 +1,13 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import ExpandedContent from './ExpandedContent';
 import type { ContentOption, ArtifactOption } from '../data/content';
+import type { Category } from '../utils/categories';
 
 /**
- * Props for the CategoryOptionButton component
+ * Props for the DetailOptionButton component
  */
-interface CategoryOptionButtonProps {
+interface DetailOptionButtonProps {
   /** The content option or artifact option to display */
   option: ContentOption | ArtifactOption;
   /** Whether this button is currently expanded */
@@ -19,30 +20,47 @@ interface CategoryOptionButtonProps {
   onClick: () => void;
   /** Callback function when the expanded content is closed */
   onClose: () => void;
+  /** The current category */
+  category: Category;
 }
 
 /**
- * An interactive category option button that can expand to show detailed content.
+ * An interactive detail option button that can expand to show detailed content.
  * Features smooth animations for expanding/collapsing and positioning.
  * When expanded, it fills the parent container. When collapsed, it positions itself
  * at a fixed vertical position based on its index.
  *
- * @param props - CategoryOptionButton component props
+ * @param props - DetailOptionButton component props
  * @returns A container with a button and expandable content
  */
-const CategoryOptionButton = ({
+const DetailOptionButton = ({
   option,
   isExpanded,
   isHidden,
   index,
   onClick,
   onClose,
-}: CategoryOptionButtonProps) => {
+  category,
+}: DetailOptionButtonProps) => {
   // Top positions for each button: first = 168px, second = 286px, third = 395px
   const topPositions = [168, 286, 395];
   const collapsedTop = `${topPositions[index] || 168}px`;
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const originalPosition = useMemo(
+    () => ({
+      top: collapsedTop,
+      left: '80px',
+      right: undefined,
+      bottom: undefined,
+      height: '88px',
+      width: '635px',
+      transform: undefined,
+    }),
+    [collapsedTop]
+  );
+
   const [position, setPosition] = useState<{
     transform?: string;
     top?: string;
@@ -51,7 +69,7 @@ const CategoryOptionButton = ({
     bottom?: string;
     height?: string;
     width?: string;
-  }>({});
+  }>(originalPosition);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -75,21 +93,13 @@ const CategoryOptionButton = ({
               });
             } else {
               // When collapsed, use fixed top position based on index and set left/right
-              setPosition({
-                top: collapsedTop,
-                left: '80px',
-                right: undefined,
-                bottom: undefined,
-                height: '88px',
-                width: '635px',
-                transform: undefined,
-              });
+              setPosition(originalPosition);
             }
           });
         });
       }
     }
-  }, [isExpanded, collapsedTop]);
+  }, [isExpanded, originalPosition]);
   return (
     <div
       ref={containerRef}
@@ -121,9 +131,10 @@ const CategoryOptionButton = ({
         isExpanded={isExpanded}
         option={option}
         onClose={onClose}
+        category={category}
       />
     </div>
   );
 };
 
-export default CategoryOptionButton;
+export default DetailOptionButton;

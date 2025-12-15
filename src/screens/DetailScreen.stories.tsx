@@ -59,7 +59,7 @@ export const Agriculture: Story = {
 
 export const CommunityLeadership: Story = {
   args: {
-    category: categoryToSlug(Category.CommunityReligiousLeadership),
+    category: categoryToSlug(Category.CommunityLeadership),
   },
 };
 

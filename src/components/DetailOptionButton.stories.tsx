@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CategoryOptionButton from './CategoryOptionButton';
+import DetailOptionButton from './DetailOptionButton';
 import { contentData } from '../data/content';
 import { Category } from '../utils/categories';
 
-const meta: Meta<typeof CategoryOptionButton> = {
-  title: 'Components/CategoryOptionButton',
-  component: CategoryOptionButton,
+const meta: Meta<typeof DetailOptionButton> = {
+  title: 'Components/DetailOptionButton',
+  component: DetailOptionButton,
   parameters: {
     layout: 'fullscreen',
   },
@@ -54,7 +54,7 @@ const meta: Meta<typeof CategoryOptionButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CategoryOptionButton>;
+type Story = StoryObj<typeof DetailOptionButton>;
 
 const agricultureOptions = contentData[Category.Agriculture].options;
 
@@ -66,6 +66,7 @@ export const Collapsed: Story = {
     index: 0,
     onClick: () => {},
     onClose: () => {},
+    category: Category.Agriculture,
   },
 };
 
@@ -77,6 +78,7 @@ export const Expanded: Story = {
     index: 0,
     onClick: () => {},
     onClose: () => {},
+    category: Category.Agriculture,
   },
 };
 
@@ -88,6 +90,7 @@ export const ViewArtifact: Story = {
     index: 2,
     onClick: () => {},
     onClose: () => {},
+    category: Category.Agriculture,
   },
 };
 
@@ -99,7 +102,6 @@ export const Hidden: Story = {
     index: 1,
     onClick: () => {},
     onClose: () => {},
+    category: Category.Agriculture,
   },
 };
-
-

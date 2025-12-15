@@ -14,9 +14,9 @@ const SelectScreen = () => {
     <div className="relative w-full overflow-hidden">
       {/* Main Content */}
       <div className="relative flex pt-20 pr-20 py-20">
-        <div className="flex justify-between flex-1">
+        <div className="flex gap-10 flex-1">
           {/* Header */}
-          <div className="basis-[40%] mt-[20vh]">
+          <div className="basis-[635px] pt-[160px]">
             <div className="pr-24">
               <h1 className="text-4xl font-bold text-yellow mb-4 ">
                 {selectScreenData.name}
