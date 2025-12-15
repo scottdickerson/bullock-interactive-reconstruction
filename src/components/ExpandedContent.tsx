@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Button from './Button';
 import {
   isContentOption,
@@ -6,12 +7,26 @@ import {
 } from '../data/content';
 import closeIcon from '../assets/icon-close.svg?url';
 
+/**
+ * Props for the ExpandedContent component
+ */
 interface ExpandedContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** The content option or artifact option to display */
   option: ContentOption | ArtifactOption;
+  /** Callback function when the close button is clicked */
   onClose: () => void;
+  /** Whether the content is currently expanded */
   isExpanded: boolean;
 }
 
+/**
+ * A component that displays expanded content for a category option.
+ * Shows an image, title, description, and content text with fade-in/out animations.
+ * Includes a close button that appears when expanded.
+ *
+ * @param props - ExpandedContent component props
+ * @returns A container with expanded content and close button
+ */
 const ExpandedContent = ({
   className,
   option,
@@ -21,7 +36,20 @@ const ExpandedContent = ({
 }: ExpandedContentProps) => {
   return (
     <div
-      className={`lg:col-span-1 w-full h-0 transition-all duration-300 overflow-hidden ${isExpanded ? 'h-full z-30 opacity-100 ' : 'pointer-events-none opacity-0 '} ${className || ''}`}
+      className={classNames(
+        'lg:col-span-1 w-full h-0 overflow-hidden',
+        {
+          'h-full z-30': isExpanded,
+          'pointer-events-none': !isExpanded,
+        },
+        className
+      )}
+      style={{
+        opacity: isExpanded ? 1 : 0,
+        transition: isExpanded
+          ? 'opacity 300ms ease-in-out 300ms' // Fade in after border expands (500ms delay)
+          : 'all 300ms ease-in-out 0ms', // Fade out immediately on collapse
+      }}
       {...props}
     >
       <div className="p-6  border-4 border-yellow rounded-lg h-full pt-10">
@@ -54,7 +82,16 @@ const ExpandedContent = ({
         )}
       </div>
       <div
-        className={`transition-all duration-300 delay-300 absolute bottom-10 w-full flex justify-center ${isExpanded ? 'opacity-100' : 'opacity-0'} ${className}`}
+        className={classNames(
+          'absolute bottom-10 w-full flex justify-center',
+          className
+        )}
+        style={{
+          opacity: isExpanded ? 1 : 0,
+          transition: isExpanded
+            ? 'opacity 300ms ease-in-out 500ms' // Fade in after border expands
+            : 'opacity 300ms ease-in-out 0ms', // Fade out immediately on collapse
+        }}
       >
         <Button
           onClick={onClose}

@@ -1,6 +1,14 @@
 import CategorySelectButton from './CategorySelectButton';
 import { selectScreenData } from '../data/content';
+import { Category, slugToCategory } from '../utils/categories';
 
+/**
+ * The category selection screen component that displays available categories.
+ * Shows a header with description and a grid of category selection buttons.
+ * Each button links to the corresponding detail page.
+ *
+ * @returns The select screen layout with category buttons
+ */
 const SelectScreen = () => {
   return (
     <div className="relative w-full overflow-hidden">
@@ -26,18 +34,21 @@ const SelectScreen = () => {
           {/* Category Grid */}
           <div className="grid grid-cols-2 gap-y-8 gap-x-10 ">
             {selectScreenData.categories.map(category => {
-              // Convert category name to URL-friendly format
-              const categorySlug = category.name
-                .toLowerCase()
-                .replace(/\s+/g, '-')
-                .replace(/\//g, '-');
+              // Convert category name to Category enum
+              const categoryEnum =
+                Object.values(Category).find(c => c === category.name) ||
+                slugToCategory(
+                  category.name
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/\//g, '-')
+                ) ||
+                Category.Agriculture;
 
               return (
                 <CategorySelectButton
                   key={category.name}
-                  name={category.name}
-                  imageUrl={category.imageUrl}
-                  href={`/detail/${categorySlug}`}
+                  category={categoryEnum}
                 />
               );
             })}

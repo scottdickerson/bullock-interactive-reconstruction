@@ -1,7 +1,15 @@
 import Woodblocks from './Woodblocks';
 import Button from './Button';
-import arrowRight from '../assets/icon-arrow.svg?url';
+import arrowRight from '../assets/icon-arrow-right.svg?url';
 
+/**
+ * The initial pullscreen/splash screen component displayed on the home page.
+ * Features the main title, subtitle, description, and a START button.
+ * Clicking anywhere on the screen navigates to the select screen.
+ * Includes animated woodblock graphics in the background.
+ *
+ * @returns The pullscreen layout with title, description, and start button
+ */
 const Pullscreen = () => {
   return (
     <div

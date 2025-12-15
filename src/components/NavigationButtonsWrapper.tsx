@@ -1,10 +1,22 @@
 import type { ComponentProps } from 'react';
 import NavigationButtons from './NavigationButtons';
 
+/**
+ * Props for the NavigationButtonsWrapper component
+ */
 interface NavigationButtonsWrapperProps extends ComponentProps<'div'> {
+  /** The current pathname to determine which navigation buttons to show */
   pathname: string;
 }
 
+/**
+ * A wrapper component that determines which navigation buttons to display
+ * based on the current pathname. Shows back button on detail pages and
+ * home button on all pages except the index.
+ *
+ * @param props - NavigationButtonsWrapper component props
+ * @returns The NavigationButtons component with appropriate props
+ */
 const NavigationButtonsWrapper = ({
   pathname,
   ...rest
@@ -31,4 +43,3 @@ const NavigationButtonsWrapper = ({
 };
 
 export default NavigationButtonsWrapper;
-

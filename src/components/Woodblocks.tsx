@@ -3,6 +3,14 @@ import politicsWoodblock from '../assets/politics-woodblock.png?url';
 import communityLeadershipWoodblock from '../assets/community-leadership-woodblock.png?url';
 import { useEffect, useState, useRef } from 'react';
 
+/**
+ * A decorative woodblock graphics component displayed at the bottom of the pullscreen.
+ * Features three woodblock images (Politics, Education, Community Leadership) with
+ * view transition names for smooth page transitions. Uses mix-blend-multiply
+ * for visual effects and manages view transition suffixes for enter/exit animations.
+ *
+ * @returns A container with three decorative woodblock images
+ */
 const Woodblocks = () => {
   // Start with -in suffix for enter animation, then switch to no suffix for exit animation
   const [viewTransitionSuffix, setViewTransitionSuffix] = useState('-in');

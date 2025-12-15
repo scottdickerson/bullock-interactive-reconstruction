@@ -1,6 +1,13 @@
 import { useEffect } from 'react';
 import { initGA, trackPageView } from '../scripts/analytics';
 
+/**
+ * Analytics component that initializes Google Analytics and tracks page views.
+ * Handles both initial page load and Astro view transitions for SPA-like navigation.
+ * Returns null as it doesn't render any UI elements.
+ *
+ * @returns null (no UI rendering)
+ */
 const Analytics = () => {
   useEffect(() => {
     initGA();
@@ -22,4 +29,3 @@ const Analytics = () => {
 };
 
 export default Analytics;
-
