@@ -1,4 +1,4 @@
-import CategorySelectButton from './CategorySelectButton';
+import CategorySelectButton from '../components/CategorySelectButton';
 import { selectScreenData } from '../data/content';
 import { Category, slugToCategory } from '../utils/categories';
 

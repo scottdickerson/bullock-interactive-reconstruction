@@ -140,7 +140,7 @@ const InactivityModal = ({
         <div className="flex gap-6 justify-center">
           <Button
             as="a"
-            href="/"
+            href={homePath}
             onClick={handleHome}
             className="flex items-center gap-2 p-6 bg-mauve text-white"
           >

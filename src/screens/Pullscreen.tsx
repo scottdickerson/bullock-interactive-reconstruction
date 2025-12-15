@@ -1,5 +1,5 @@
-import Woodblocks from './Woodblocks';
-import Button from './Button';
+import Woodblocks from '../components/Woodblocks';
+import Button from '../components/Button';
 import arrowRight from '../assets/icon-arrow-right.svg?url';
 
 /**

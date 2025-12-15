@@ -1,14 +1,44 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DetailScreen from './DetailScreen';
-import { Category, categoryToSlug } from '../utils/categories';
+import {
+  Category,
+  categoryToSlug,
+  slugToCategory,
+  getCategoryBackground,
+} from '../utils/categories';
 
 const meta: Meta<typeof DetailScreen> = {
-  title: 'Components/DetailScreen',
+  title: 'Screens/DetailScreen',
   component: DetailScreen,
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story, context) => {
+      const categorySlug = context.args.category || 'agriculture';
+      const categoryEnum = slugToCategory(categorySlug) || Category.Agriculture;
+      const backgroundImage = categoryEnum
+        ? `/category-background/${getCategoryBackground(categoryEnum)}`
+        : '/background.png';
+
+      return (
+        <div
+          style={{
+            position: 'relative',
+            width: '100vw',
+            height: '100vh',
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <Story />
+        </div>
+      );
+    },
+  ],
   argTypes: {
     category: {
       control: 'select',
@@ -50,5 +80,3 @@ export const Entrepreneurship: Story = {
     category: categoryToSlug(Category.Entrepreneurship),
   },
 };
-
-

@@ -15,7 +15,6 @@ const meta: Meta<typeof Woodblocks> = {
           position: 'relative',
           width: '100%',
           height: '400px',
-          backgroundColor: '#1a1a1a',
         }}
       >
         <Story />
@@ -28,5 +27,3 @@ export default meta;
 type Story = StoryObj<typeof Woodblocks>;
 
 export const Default: Story = {};
-
-

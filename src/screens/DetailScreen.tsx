@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import CategoryTag from './CategoryTag';
-import CategoryOptionButton from './CategoryOptionButton';
+import CategoryTag from '../components/CategoryTag';
+import CategoryOptionButton from '../components/CategoryOptionButton';
 import { contentData, type ContentData } from '../data/content';
 import { slugToCategory, Category } from '../utils/categories';
 
@@ -53,7 +53,7 @@ const DetailScreen = ({
 
       {/* Left Column Header and Overview */}
       <div className="basis-[630px] mt-[221px]">
-        <h1 className="text-4xl font-bold text-yellow mb-8 ">{content.name}</h1>
+        <h1 className="text-4xl font-bold text-yellow mb-8">{content.name}</h1>
         <p className="text-xl font-medium text-details max-w-4xl leading-snug w-[600px]">
           {content.description}
         </p>

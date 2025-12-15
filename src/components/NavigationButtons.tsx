@@ -34,7 +34,7 @@ const NavigationButtons = ({
 }: NavigationButtonsProps) => {
   return (
     <div
-      className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} `}
+      className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} text-details`}
     >
       <div className="flex gap-4">
         {showBack && (
@@ -48,7 +48,7 @@ const NavigationButtons = ({
               alt="Back arrow"
               className="w-[42px] h-[18px]"
             />
-            <span className="text-details">BACK</span>
+            BACK
           </Button>
         )}
         {showHome && (
