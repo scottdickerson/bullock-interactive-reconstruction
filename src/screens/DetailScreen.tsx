@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CategoryTag from '../components/CategoryTag';
-import CategoryOptionButton from '../components/CategoryOptionButton';
+import DetailOptionButton from '../components/DetailOptionButton';
 import { contentData, type ContentData } from '../data/content';
 import { slugToCategory, Category } from '../utils/categories';
 
@@ -64,7 +64,7 @@ const DetailScreen = ({
         {/* Right Column - Options */}
         <div className="flex flex-col gap-4 relative items-center">
           {Object.entries(content.options).map(([key, option], index) => (
-            <CategoryOptionButton
+            <DetailOptionButton
               key={key}
               option={option}
               index={index}

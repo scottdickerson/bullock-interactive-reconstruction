@@ -5,9 +5,9 @@ import type { ContentOption, ArtifactOption } from '../data/content';
 import type { Category } from '../utils/categories';
 
 /**
- * Props for the CategoryOptionButton component
+ * Props for the DetailOptionButton component
  */
-interface CategoryOptionButtonProps {
+interface DetailOptionButtonProps {
   /** The content option or artifact option to display */
   option: ContentOption | ArtifactOption;
   /** Whether this button is currently expanded */
@@ -25,15 +25,15 @@ interface CategoryOptionButtonProps {
 }
 
 /**
- * An interactive category option button that can expand to show detailed content.
+ * An interactive detail option button that can expand to show detailed content.
  * Features smooth animations for expanding/collapsing and positioning.
  * When expanded, it fills the parent container. When collapsed, it positions itself
  * at a fixed vertical position based on its index.
  *
- * @param props - CategoryOptionButton component props
+ * @param props - DetailOptionButton component props
  * @returns A container with a button and expandable content
  */
-const CategoryOptionButton = ({
+const DetailOptionButton = ({
   option,
   isExpanded,
   isHidden,
@@ -41,7 +41,7 @@ const CategoryOptionButton = ({
   onClick,
   onClose,
   category,
-}: CategoryOptionButtonProps) => {
+}: DetailOptionButtonProps) => {
   // Top positions for each button: first = 168px, second = 286px, third = 395px
   const topPositions = [168, 286, 395];
   const collapsedTop = `${topPositions[index] || 168}px`;
@@ -137,4 +137,4 @@ const CategoryOptionButton = ({
   );
 };
 
-export default CategoryOptionButton;
+export default DetailOptionButton;
