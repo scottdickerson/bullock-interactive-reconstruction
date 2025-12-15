@@ -8,7 +8,7 @@ export enum Category {
 
 export const categoryNames: Record<Category, string> = {
   [Category.Agriculture]: 'Agriculture',
-  [Category.CommunityLeadership]: 'Community/Religious Leadership',
+  [Category.CommunityLeadership]: 'Community/ Religious Leadership',
   [Category.Politics]: 'Politics',
   [Category.Education]: 'Education',
   [Category.Entrepreneurship]: 'Entrepreneurship',
