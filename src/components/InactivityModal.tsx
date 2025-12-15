@@ -123,7 +123,8 @@ const InactivityModal = ({
     <Dialog open={isVisible} onOpenChange={setIsVisible}>
       <DialogContent
         ref={modalRef}
-        className="py-14 bg-black border-yellow rounded-2xl w-[830px]"
+        className="py-14 bg-black border-yellow rounded-2xl w-[830px] !z-[60]"
+        overlayClassName="!z-[55]"
       >
         <DialogHeader>
           <DialogTitle className="flex justify-center">

@@ -74,6 +74,7 @@ const DetailScreen = ({
                 handleOptionClick(key as keyof ContentData['options'])
               }
               onClose={handleClose}
+              category={category}
             />
           ))}
         </div>

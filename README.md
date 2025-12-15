@@ -17,7 +17,7 @@ An interactive web application showcasing the Reconstruction era in Texas, built
 2. **Screen2** (`/screen2`) - Category selection page with:
    - Same purple background
    - Animated woodblocks that slide out when navigating from Pullscreen
-   - Five category buttons: Community/Religious Leadership, Agriculture, Politics, Education, Entrepreneurship
+   - Five category buttons: CommunityLeadership, Agriculture, Politics, Education, Entrepreneurship
    - Navigation buttons (HOME, Español)
    - Woodblocks only animate when coming from previous screen, not from back button
 

@@ -1,17 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import DetailScreen from '../../screens/DetailScreen';
-import { selectScreenData } from '../../data/content';
+import { Category as CategoryEnum, categoryToSlug } from '../../utils/categories';
 
 export function getStaticPaths() {
-  return selectScreenData.categories.map(category => {
-    const categorySlug = category.name
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/\//g, '-');
-    
+  return Object.values(CategoryEnum).map(category => {
     return {
-      params: { category: categorySlug },
+      params: { category: categoryToSlug(category) },
     };
   });
 }

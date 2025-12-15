@@ -1,3 +1,5 @@
+import { Category } from '../utils/categories';
+
 export interface ContentOption {
   title: string;
   description: string;
@@ -70,7 +72,7 @@ export const contentData: Record<string, ContentData> = {
       },
     },
   },
-  'Community/Religious Leadership': {
+  CommunityLeadership: {
     name: 'Nace Duval',
     description:
       'Nace Duval was a preacher, community leader, and businessman in San Antonio. In 1866, Duval organized the first Black Methodist congregations in Bexar County. The St. James and St. Paul churches were gathering places that met community needs. Within these spaces, Duval established a school and employment agency. Open to church members, the services helped advance education and job prospects. Duval also owned a barbershop on Soledad Street that served clients of any race.',
@@ -83,7 +85,7 @@ export const contentData: Record<string, ContentData> = {
           'Black Texans had to navigate segregated spaces and find fair job opportunities. They came together safely at churches established by and for Black communities. As a preacher and respected community leader, Duval helped others find support, education, and jobs.',
         image:
           'Mount Zion Baptist Church, San Antonio, Texas // Courtesy General Photograph Collection, UTSA Special Collections, San Antonio',
-        imageUrl: '/community-religious-leadership/new-opportunities.png',
+        imageUrl: '/community-leadership/new-opportunities.png',
       },
       'Challenges and Dangers': {
         title: 'Challenges and Dangers',
@@ -93,13 +95,13 @@ export const contentData: Record<string, ContentData> = {
           'The Black Codes were the foundation for Jim Crow segregation laws. Despite owning his own business, Duval was forced to follow these rules to avoid being the target of violence. White customers entered his barbershop through the front door. Black and Tejano customers entered through the alleyway back door.',
         image:
           'Businesses in 500 block of East Commerce Street, San Antonio, Texas, 1917 // Courtesy General Photograph Collection, UTSA, San Antonio',
-        imageUrl: '/community-religious-leadership/challenges-and-dangers.png',
+        imageUrl: '/community-leadership/challenges-and-dangers.png',
       },
       'View Artifact': {
         title: 'View Artifact',
         image:
           'This photograph looks out on Soledad Street near Main Plaza, the area where Duval ran his barbershop. Soledad Street, San Antonio, Texas, ca. 1870 // Courtesy General Photograph Collection, UTSA Libraries Special Collections, San Antonio',
-        imageUrl: '/community-religious-leadership/view-artifact.png',
+        imageUrl: '/community-leadership/view-artifact.png',
       },
     },
   },
@@ -214,12 +216,15 @@ export const selectScreenData = {
     'Select a topic to learn about a person who pursued that path and how their rights shifted throughout Reconstruction.',
   categories: [
     {
-      name: 'Community/Religious Leadership',
-      imageUrl: '/categories/community-religious-leadership.png',
+      name: Category.CommunityLeadership,
+      imageUrl: '/categories/community-leadership.png',
     },
-    { name: 'Agriculture', imageUrl: '/categories/agriculture.png' },
-    { name: 'Politics', imageUrl: '/categories/politics.png' },
-    { name: 'Education', imageUrl: '/categories/education.png' },
-    { name: 'Entrepreneurship', imageUrl: '/categories/entrepreneurship.png' },
+    { name: Category.Agriculture, imageUrl: '/categories/agriculture.png' },
+    { name: Category.Politics, imageUrl: '/categories/politics.png' },
+    { name: Category.Education, imageUrl: '/categories/education.png' },
+    {
+      name: Category.Entrepreneurship,
+      imageUrl: '/categories/entrepreneurship.png',
+    },
   ],
 };

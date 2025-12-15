@@ -42,7 +42,7 @@ export const Agriculture: Story = {
 
 export const CommunityLeadership: Story = {
   args: {
-    category: Category.CommunityReligiousLeadership,
+    category: Category.CommunityLeadership,
   },
 };
 
@@ -63,5 +63,3 @@ export const Entrepreneurship: Story = {
     category: Category.Entrepreneurship,
   },
 };
-
-

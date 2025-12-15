@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import ExpandedContent from './ExpandedContent';
 import type { ContentOption, ArtifactOption } from '../data/content';
+import type { Category } from '../utils/categories';
 
 /**
  * Props for the CategoryOptionButton component
@@ -19,6 +20,8 @@ interface CategoryOptionButtonProps {
   onClick: () => void;
   /** Callback function when the expanded content is closed */
   onClose: () => void;
+  /** The current category */
+  category: Category;
 }
 
 /**
@@ -37,12 +40,27 @@ const CategoryOptionButton = ({
   index,
   onClick,
   onClose,
+  category,
 }: CategoryOptionButtonProps) => {
   // Top positions for each button: first = 168px, second = 286px, third = 395px
   const topPositions = [168, 286, 395];
   const collapsedTop = `${topPositions[index] || 168}px`;
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const originalPosition = useMemo(
+    () => ({
+      top: collapsedTop,
+      left: '80px',
+      right: undefined,
+      bottom: undefined,
+      height: '88px',
+      width: '635px',
+      transform: undefined,
+    }),
+    [collapsedTop]
+  );
+
   const [position, setPosition] = useState<{
     transform?: string;
     top?: string;
@@ -51,7 +69,7 @@ const CategoryOptionButton = ({
     bottom?: string;
     height?: string;
     width?: string;
-  }>({});
+  }>(originalPosition);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -75,21 +93,13 @@ const CategoryOptionButton = ({
               });
             } else {
               // When collapsed, use fixed top position based on index and set left/right
-              setPosition({
-                top: collapsedTop,
-                left: '80px',
-                right: undefined,
-                bottom: undefined,
-                height: '88px',
-                width: '635px',
-                transform: undefined,
-              });
+              setPosition(originalPosition);
             }
           });
         });
       }
     }
-  }, [isExpanded, collapsedTop]);
+  }, [isExpanded, originalPosition]);
   return (
     <div
       ref={containerRef}
@@ -121,6 +131,7 @@ const CategoryOptionButton = ({
         isExpanded={isExpanded}
         option={option}
         onClose={onClose}
+        category={category}
       />
     </div>
   );
