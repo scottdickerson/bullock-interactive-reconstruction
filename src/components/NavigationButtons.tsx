@@ -1,13 +1,30 @@
 import Button from './Button';
+import arrowLeft from '../assets/icon-arrow-left.svg?url';
+import homeIcon from '../assets/icon-home.svg?url';
 
+/**
+ * Props for the NavigationButtons component
+ */
 interface NavigationButtonsProps {
+  /** Whether to show the back button */
   showBack?: boolean;
+  /** Whether to show the home button */
   showHome?: boolean;
+  /** The href for the back button */
   backHref?: string;
+  /** Additional CSS classes to apply to the container */
   className?: string;
+  /** Callback function when the Spanish language button is clicked */
   onSpanishClick?: () => void;
 }
 
+/**
+ * A navigation buttons component that displays back, home, and optional Spanish language buttons.
+ * Positioned at the bottom of the screen with consistent styling.
+ *
+ * @param props - NavigationButtons component props
+ * @returns A container with navigation buttons
+ */
 const NavigationButtons = ({
   showBack = false,
   backHref = '/select',
@@ -17,26 +34,26 @@ const NavigationButtons = ({
 }: NavigationButtonsProps) => {
   return (
     <div
-      className={`absolute z-50 bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] ${className}`}
+      className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} text-details`}
     >
       <div className="flex gap-4">
         {showBack && (
-          <Button as="a" href={backHref} className="flex items-center gap-2">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <Button
+            as="a"
+            href={backHref}
+            className="flex items-center gap-2 z-30"
+          >
+            <img
+              src={arrowLeft}
+              alt="Back arrow"
+              className="w-[42px] h-[18px]"
+            />
             BACK
           </Button>
         )}
         {showHome && (
           <Button as="a" href="/" className="flex items-center gap-2">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-            </svg>
+            <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
             HOME
           </Button>
         )}

@@ -1,14 +1,23 @@
 ---
 import Analytics from '../components/Analytics';
 import NavigationButtonsWrapper from '../components/NavigationButtonsWrapper';
+import InactivityModalWrapper from '../components/InactivityModalWrapper';
+import { slugToCategory, getCategoryBackground } from '../utils/categories';
 
 interface Props {
   title?: string;
   pathname?: string;
+  category?: string;
 }
 
-const { title = 'Bullock Interactive Reconstruction'} = Astro.props;
+const { title = 'Bullock Interactive Reconstruction', category } = Astro.props;
 const pathname = Astro.url.pathname;
+
+// Get background image URL
+const categoryEnum = category ? slugToCategory(category) : null;
+const backgroundImage = categoryEnum
+  ? `/category-background/${getCategoryBackground(categoryEnum)}`
+  : '/background.png';
 ---
 
 <!doctype html>
@@ -21,17 +30,19 @@ const pathname = Astro.url.pathname;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="pl-40 pb-24 pr-16 h-svh text-pretty">
+  <body >
+    <main class="pl-30 pr-16 h-svh text-pretty overflow-hidden">
     <Analytics client:load />
     <div
     class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{ backgroundImage: `url(/background.png)` }}
+    style={{ backgroundImage: `url(${backgroundImage})` }}
   ></div>
     <div class="[view-transition-name:content] relative h-full">
       <slot />
       <NavigationButtonsWrapper pathname={pathname} />
+      <InactivityModalWrapper pathname={pathname} client:load />
     </div>
-   
+  </main>
   </body>
 </html>
 

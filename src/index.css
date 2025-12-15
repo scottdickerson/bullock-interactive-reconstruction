@@ -153,6 +153,11 @@
   --color-details: #f2efe1;
   --color-button: #f2efe1;
   --color-pullscreen-text: #e6ddc8;
+  --color-yellow: #f4b330;
+  --color-purple: #632549;
+  --background-purple: #632549;
+  --color-mauve: #5a1e40;
+  --background-mauve: #5a1e40;
 }
 
 /* CSS View Transitions */
