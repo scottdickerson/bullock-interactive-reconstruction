@@ -56,7 +56,7 @@ const ExpandedContent = ({
         <h3 className="text-2xl font-bold text-yellow mb-10 text-center">
           {option.title}
         </h3>
-        <div className="mb-24 mx-16 bag">
+        <div className="mb-24 mx-16">
           {option.imageUrl ? (
             <img
               src={option.imageUrl}
