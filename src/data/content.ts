@@ -146,7 +146,7 @@ export const contentData: Record<string, ContentData> = {
         description:
           'Educational opportunities for Black Texans improved under Reconstruction. Harriet Smith, and others like her, made a difference by forming schools for Black education.',
         content:
-          'Texas State law prohibited enslaved people from learning to read or write. Enslavers feared that education would make the people they help captive difficult to control. After Emancipation, the Freedmen‘s Bureau led efforts to found schools for Black Texans. Bureau records show that 150 schools enrolled 9,086 Black students across the state by 1870.',
+          'Texas State law prohibited enslaved people from learning to read or write. Enslavers feared that education would make the people they held captive difficult to control. After Emancipation, the Freedmen‘s Bureau led efforts to found schools for Black Texans. Bureau records show that 150 schools enrolled 9,086 Black students across the state by 1870.',
         image:
           'African American School in Diboll, Texas with teacher J.W. Hogg and students // Courtesy University of North Texas Libraries, The Portal to Texas History, crediting the History Center, Diboll',
         imageUrl: '/education/new-opportunities.png',
