@@ -60,14 +60,22 @@ const FadeInModal = ({
     }
   }, [isOpen, fadeInDelay]);
 
+  // Handle closing when isOpen changes to false externally
+  useEffect(() => {
+    if (!isOpen && internalOpen) {
+      // Start fade-out animation
+      setIsVisible(false);
+      const timer = setTimeout(() => {
+        setInternalOpen(false);
+      }, actualFadeOutDelay);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, internalOpen, actualFadeOutDelay]);
+
   const handleOpenChange = (open: boolean) => {
     if (!open) {
-      // Start fade-out, then notify parent after animation completes
       setIsVisible(false);
-      setTimeout(() => {
-        setInternalOpen(false);
-        onOpenChange(false);
-      }, actualFadeOutDelay);
+      onOpenChange(false);
     } else {
       onOpenChange(true);
     }

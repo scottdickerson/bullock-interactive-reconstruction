@@ -67,7 +67,7 @@ const ExpandedContent = ({
       }}
       {...props}
     >
-      <div className="p-6 pt-20 border-4 border-yellow rounded-lg h-full pt-10">
+      <div className="p-6 border-4 border-yellow rounded-lg h-full pt-10">
         <h3 className="text-2xl font-bold text-yellow mb-10 text-center">
           {option.title}
         </h3>
