@@ -13,6 +13,7 @@ const getLanguageFromPath = (): string => {
   return 'en';
 };
 
+// Initialize singleton instance (for backward compatibility)
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -30,9 +31,19 @@ i18n
       order: ['path', 'localStorage', 'navigator'],
       caches: ['localStorage'],
       lookupFromPathIndex: 0,
-      checkWhitelist: true,
     },
   });
 
-export default i18n;
+// Export function to setup i18n with a specific language
+export const setupClientI18n = (lang: 'en' | 'es' = 'en') => {
+  // Set language synchronously to prevent flash of wrong language
+  if (i18n.language !== lang) {
+    i18n.language = lang;
+    i18n.resolvedLanguage = lang;
+    // Also trigger changeLanguage for async operations, but don't wait
+    i18n.changeLanguage(lang);
+  }
+  return i18n;
+};
 
+export default i18n;

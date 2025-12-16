@@ -4,6 +4,7 @@ import NavigationButtonsWrapper from '../components/NavigationButtonsWrapper';
 import InactivityModalWrapper from '../components/InactivityModalWrapper';
 import I18nProvider from '../components/I18nProvider';
 import { slugToCategory, getCategoryBackground } from '../utils/categories';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -35,6 +36,7 @@ const backgroundImage = categoryEnum
   <body >
     <main class="pl-32 pr-16 h-svh text-pretty overflow-hidden">
     <Analytics client:load />
+    <ClientRouter />
     <div
     class="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: `url(${backgroundImage})` }}

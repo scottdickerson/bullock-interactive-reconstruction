@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../lib/i18n-client';
+import { setupClientI18n } from '../lib/i18n-client';
 
 interface I18nProviderProps {
   children: React.ReactNode;
@@ -14,14 +14,14 @@ interface I18nProviderProps {
  * @param props - I18nProvider component props
  * @returns The children wrapped with i18n context
  */
-const I18nProvider = ({ children, lang }: I18nProviderProps) => {
-  useEffect(() => {
-    if (lang) {
-      i18n.changeLanguage(lang);
-    }
+const I18nProvider = ({ children, lang = 'en' }: I18nProviderProps) => {
+  // Initialize i18n with the correct language immediately (synchronously)
+  // This prevents the flash of English content before Spanish loads
+  const i18nInstance = useMemo(() => {
+    return setupClientI18n(lang);
   }, [lang]);
 
-  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+  return <I18nextProvider i18n={i18nInstance}>{children}</I18nextProvider>;
 };
 
 export default I18nProvider;
