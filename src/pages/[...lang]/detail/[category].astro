@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import DetailScreen from '../../../screens/DetailScreen';
+import I18nProvider from '../../../components/I18nProvider';
+import { Category as CategoryEnum, categoryToSlug } from '../../../utils/categories';
+
+export function getStaticPaths() {
+  const categories = Object.values(CategoryEnum);
+  const paths: Array<{ params: { lang?: string; category: string } }> = [];
+
+  // Generate paths for each category with and without lang
+  categories.forEach(category => {
+    const categorySlug = categoryToSlug(category);
+
+    // Spanish - with 'es' prefix
+    paths.push({
+      params: { lang: 'es', category: categorySlug },
+    });
+
+    // English - with 'en' prefix
+    paths.push({
+      params: { lang: 'en', category: categorySlug },
+    });
+
+    // No lang prefix
+    paths.push({
+      params: { category: categorySlug, lang: undefined },
+    });
+  });
+
+  return paths;
+}
+
+// Extract lang from params - if lang array exists and first element is 'es', use Spanish
+const lang = Astro.params.lang === 'es' ? 'es' : 'en';
+const { category } = Astro.params;
+---
+
+<Layout title="Reconstruction Era Texans - Details" category={category} lang={lang}>
+  <I18nProvider lang={lang} client:load>
+    <DetailScreen category={category || 'agriculture'} client:load />
+  </I18nProvider>
+</Layout>
+

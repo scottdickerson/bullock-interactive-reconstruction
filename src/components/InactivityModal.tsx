@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from './Button';
 import homeIcon from '../assets/icon-home.svg?url';
 import arrowRight from '../assets/icon-arrow-right.svg?url';
@@ -36,6 +37,7 @@ const InactivityModal = ({
   autoCloseTimeout = 15000, // 15 seconds
   homePath = '/',
 }: InactivityModalProps) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -135,7 +137,7 @@ const InactivityModal = ({
             />
           </DialogTitle>
           <DialogDescription className="text-center mt-6 mb-6 text-details font-bold text-2xl">
-            Need more time?
+            {t('inactivity.needMoreTime')}
           </DialogDescription>
         </DialogHeader>
         <div className="flex gap-6 justify-center">
@@ -146,13 +148,13 @@ const InactivityModal = ({
             className="flex items-center gap-2 p-6 bg-mauve text-white"
           >
             <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
-            <span>HOME</span>
+            <span>{t('inactivity.home')}</span>
           </Button>
           <Button
             onClick={handleKeepReading}
             className="flex items-center gap-2 p-6 bg-mauve text-white text-nowrap"
           >
-            <span>KEEP READING</span>
+            <span>{t('inactivity.keepReading')}</span>
             <img
               src={arrowRight}
               alt="Arrow Right"

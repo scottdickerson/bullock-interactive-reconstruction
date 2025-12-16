@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pullscreen from '../../screens/Pullscreen';
+import I18nProvider from '../../components/I18nProvider';
+
+export function getStaticPaths() {
+    return [
+      // English (default) - no lang prefix
+      { params: {lang: 'en' as const} },
+    // Spanish - with 'es' prefix
+    { params: { lang: 'es' as const } },
+    { params: { lang: undefined } },
+  ];
+}
+
+// Extract lang from params - if lang array exists and first element is 'es', use Spanish
+const lang = Astro.params.lang === 'es' ? 'es' : 'en';
+---
+
+<Layout title="Recounting Reconstruction" lang={lang}>
+  <I18nProvider lang={lang} client:load>
+    <Pullscreen client:load />
+  </I18nProvider>
+</Layout>
+
+ 

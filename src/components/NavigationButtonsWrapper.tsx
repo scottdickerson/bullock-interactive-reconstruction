@@ -7,6 +7,8 @@ import NavigationButtons from './NavigationButtons';
 interface NavigationButtonsWrapperProps extends ComponentProps<'div'> {
   /** The current pathname to determine which navigation buttons to show */
   pathname: string;
+  /** The current language */
+  lang?: 'en' | 'es';
 }
 
 /**
@@ -19,24 +21,48 @@ interface NavigationButtonsWrapperProps extends ComponentProps<'div'> {
  */
 const NavigationButtonsWrapper = ({
   pathname,
+  lang = 'en',
   ...rest
 }: NavigationButtonsWrapperProps) => {
-  const handleSpanishClick = () => {
-    // TODO: Implement Spanish language toggle
-    console.log('Spanish button clicked');
+  // Calculate Spanish href based on current location
+  const calculateSpanishHref = (): string => {
+    // Determine target language (toggle between en and es)
+    const targetLang = lang === 'es' ? 'en' : 'es';
+    const langPrefix = targetLang === 'es' ? '/es' : '';
+
+    // Extract the path without language prefix
+    let pathWithoutLang = pathname;
+    if (pathname.startsWith('/es/')) {
+      pathWithoutLang = pathname.replace('/es', '');
+    } else if (pathname === '/es') {
+      pathWithoutLang = '/';
+    }
+
+    // Build new path with target language prefix
+    return pathWithoutLang === '/'
+      ? `${langPrefix}/`
+      : `${langPrefix}${pathWithoutLang}`;
   };
 
   // Show back button on detail pages
-  const showBack = pathname.startsWith('/detail/');
-  const backHref = '/select';
-  const showHome = pathname !== '/';
+  const showBack =
+    pathname.startsWith('/detail/') || pathname.startsWith('/es/detail/');
+  const langPrefix = lang === 'es' ? '/es' : '';
+  const backHref = `${langPrefix}/select`;
+  const homeHref = langPrefix || '/';
+  // Don't show home button on home pages (both / and /es)
+  const showHome =
+    pathname !== '/' && pathname !== '/es' && pathname !== '/es/';
+  const spanishHref = calculateSpanishHref();
 
   return (
     <NavigationButtons
       showBack={showBack}
       backHref={backHref}
-      onSpanishClick={handleSpanishClick}
+      homeHref={homeHref}
+      spanishHref={spanishHref}
       showHome={showHome}
+      lang={lang}
       {...rest}
     />
   );

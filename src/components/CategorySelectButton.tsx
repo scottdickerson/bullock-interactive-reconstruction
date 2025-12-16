@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import {
   Category,
   getCategoryImageUrl,
-  getCategoryHref,
-  categoryNames,
+  categoryToSlug,
 } from '../utils/categories';
 
 /**
@@ -27,8 +27,25 @@ const CategorySelectButton = ({
   category,
   className = '',
 }: CategorySelectButtonProps) => {
+  const { t, i18n } = useTranslation();
   const imageUrl = getCategoryImageUrl(category);
-  const href = getCategoryHref(category);
+  
+  // Map Category enum to translation key
+  const translationKeyMap: Record<Category, string> = {
+    [Category.Agriculture]: 'categories.agriculture',
+    [Category.CommunityLeadership]: 'categories.communityLeadership',
+    [Category.Politics]: 'categories.politics',
+    [Category.Education]: 'categories.education',
+    [Category.Entrepreneurship]: 'categories.entrepreneurship',
+  };
+
+  const translationKey = translationKeyMap[category];
+  const categoryName = t(translationKey);
+  
+  // Build href with language prefix
+  const langPrefix = i18n.language === 'es' ? '/es' : '';
+  const categorySlug = categoryToSlug(category);
+  const href = `${langPrefix}/detail/${categorySlug}`;
 
   return (
     <a
@@ -47,7 +64,7 @@ const CategorySelectButton = ({
       {/* Content Overlay */}
       <div className="relative z-20 flex items-center justify-center h-full p-18 ">
         <h3 className="text-2xl font-bold text-button group-hover:text-yellow transition-colors text-center">
-          {categoryNames[category]}
+          {categoryName}
         </h3>
       </div>
     </a>

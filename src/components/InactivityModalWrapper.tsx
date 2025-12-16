@@ -7,6 +7,8 @@ import InactivityModal from './InactivityModal';
 interface InactivityModalWrapperProps {
   /** The current pathname to determine if the modal should be shown */
   pathname?: string;
+  /** The current language */
+  lang?: 'en' | 'es';
 }
 
 /**
@@ -16,7 +18,7 @@ interface InactivityModalWrapperProps {
  * @param props - InactivityModalWrapper component props
  * @returns The InactivityModal component if pathname is not '/', otherwise null
  */
-const InactivityModalWrapper = ({ pathname }: InactivityModalWrapperProps) => {
+const InactivityModalWrapper = ({ pathname, lang = 'en' }: InactivityModalWrapperProps) => {
   const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
@@ -25,14 +27,17 @@ const InactivityModalWrapper = ({ pathname }: InactivityModalWrapperProps) => {
       pathname ??
       (typeof window !== 'undefined' ? window.location.pathname : '');
     // Show modal on all pages except the pullscreen (index page)
-    setShouldShow(currentPath !== '/');
+    setShouldShow(currentPath !== '/' && currentPath !== '/es');
   }, [pathname]);
 
   if (!shouldShow) {
     return null;
   }
 
-  return <InactivityModal />;
+  const langPrefix = lang === 'es' ? '/es' : '';
+  const homePath = `${langPrefix}/`;
+
+  return <InactivityModal homePath={homePath} />;
 };
 
 export default InactivityModalWrapper;

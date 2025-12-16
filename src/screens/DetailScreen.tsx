@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import CategoryTag from '../components/CategoryTag';
 import DetailOptionButton from '../components/DetailOptionButton';
-import { contentData, type ContentData } from '../data/content';
+import { getContentData, type ContentData } from '../data/content';
 import { slugToCategory, Category } from '../utils/categories';
 
 /**
@@ -23,6 +24,7 @@ interface DetailScreenProps {
 const DetailScreen = ({
   category: categorySlug = 'agriculture',
 }: DetailScreenProps) => {
+  const { t } = useTranslation();
   const [expandedOption, setExpandedOption] = useState<
     keyof ContentData['options'] | null
   >(null);
@@ -42,7 +44,7 @@ const DetailScreen = ({
     setExpandedOption(null);
   };
 
-  const content = contentData[category];
+  const content = getContentData(category, t);
 
   return (
     <div className="relative h-full pr-8 flex gap-8">

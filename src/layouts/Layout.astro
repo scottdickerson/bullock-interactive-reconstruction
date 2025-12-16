@@ -2,15 +2,17 @@
 import Analytics from '../components/Analytics';
 import NavigationButtonsWrapper from '../components/NavigationButtonsWrapper';
 import InactivityModalWrapper from '../components/InactivityModalWrapper';
+import I18nProvider from '../components/I18nProvider';
 import { slugToCategory, getCategoryBackground } from '../utils/categories';
 
 interface Props {
   title?: string;
   pathname?: string;
   category?: string;
+  lang?: 'en' | 'es';
 }
 
-const { title = 'Bullock Interactive Reconstruction', category } = Astro.props;
+const { title = 'Bullock Interactive Reconstruction', category, lang = 'en' } = Astro.props;
 const pathname = Astro.url.pathname;
 
 // Get background image URL
@@ -21,7 +23,7 @@ const backgroundImage = categoryEnum
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Recounting Reconstruction - Bullock Interactive" />
@@ -39,8 +41,10 @@ const backgroundImage = categoryEnum
   ></div>
     <div class="[view-transition-name:content] relative h-full">
       <slot />
-      <NavigationButtonsWrapper pathname={pathname} />
-      <InactivityModalWrapper pathname={pathname} client:load />
+      <I18nProvider lang={lang} client:load>
+        <NavigationButtonsWrapper pathname={pathname} lang={lang} client:load />
+      </I18nProvider>
+      <InactivityModalWrapper pathname={pathname} lang={lang} client:load />
     </div>
   </main>
   </body>

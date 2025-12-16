@@ -5,7 +5,6 @@ import {
   isContentOption,
   type ContentOption,
   type ArtifactOption,
-  ContentDataOptionEnum,
 } from '../data/content';
 import closeIcon from '../assets/icon-close.svg?url';
 import zoomIcon from '../assets/zoom.svg?url';
@@ -44,7 +43,8 @@ const ExpandedContent = ({
   ...props
 }: ExpandedContentProps) => {
   const [isZoomDialogOpen, setIsZoomDialogOpen] = useState(false);
-  const isArtifactOption = option.title === ContentDataOptionEnum.View_Artifact;
+  // Artifact option is the one that is NOT a content option (doesn't have content/description)
+  const isArtifactOption = !isContentOption(option);
   const artifactImageUrl = isArtifactOption
     ? getCategoryArtifactUrl(category)
     : null;

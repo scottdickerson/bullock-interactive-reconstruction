@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Button from './Button';
 import arrowLeft from '../assets/icon-arrow-left.svg?url';
 import homeIcon from '../assets/icon-home.svg?url';
@@ -12,10 +13,14 @@ interface NavigationButtonsProps {
   showHome?: boolean;
   /** The href for the back button */
   backHref?: string;
+  /** The href for the home button */
+  homeHref?: string;
+  /** The href for the Spanish language link */
+  spanishHref?: string;
+  /** The current language */
+  lang?: 'en' | 'es';
   /** Additional CSS classes to apply to the container */
   className?: string;
-  /** Callback function when the Spanish language button is clicked */
-  onSpanishClick?: () => void;
 }
 
 /**
@@ -28,10 +33,18 @@ interface NavigationButtonsProps {
 const NavigationButtons = ({
   showBack = false,
   backHref = '/select',
+  homeHref = '/',
   className = '',
-  onSpanishClick,
+  spanishHref,
   showHome = true,
+  lang = 'en',
 }: NavigationButtonsProps) => {
+  const { t } = useTranslation();
+
+  // Show "English" when in Spanish, "Español" when in English
+  const languageButtonText =
+    lang === 'es' ? t('common.english') : t('common.español');
+
   return (
     <div
       className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} text-details`}
@@ -48,17 +61,21 @@ const NavigationButtons = ({
               alt="Back arrow"
               className="w-[42px] h-[18px]"
             />
-            BACK
+            {t('common.back')}
           </Button>
         )}
         {showHome && (
-          <Button as="a" href="/" className="flex items-center gap-2">
+          <Button as="a" href={homeHref} className="flex items-center gap-2">
             <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
-            HOME
+            {t('common.home')}
           </Button>
         )}
       </div>
-      {onSpanishClick && <Button onClick={onSpanishClick}>Español</Button>}
+      {spanishHref && (
+        <Button as="a" href={spanishHref}>
+          {languageButtonText}
+        </Button>
+      )}
     </div>
   );
 };

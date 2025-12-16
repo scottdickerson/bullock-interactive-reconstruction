@@ -1,5 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import CategorySelectButton from '../components/CategorySelectButton';
-import { selectScreenData } from '../data/content';
+import { getSelectScreenData } from '../data/content';
 import { Category, slugToCategory } from '../utils/categories';
 
 /**
@@ -10,6 +11,9 @@ import { Category, slugToCategory } from '../utils/categories';
  * @returns The select screen layout with category buttons
  */
 const SelectScreen = () => {
+  const { t, i18n } = useTranslation();
+  const selectScreenData = getSelectScreenData(t);
+
   return (
     <div className="relative w-full overflow-hidden">
       {/* Main Content */}
@@ -60,5 +64,6 @@ const SelectScreen = () => {
 };
 
 export default SelectScreen;
+
 
 

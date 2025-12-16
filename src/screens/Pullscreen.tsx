@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Woodblocks from '../components/Woodblocks';
 import Button from '../components/Button';
 import arrowRight from '../assets/icon-arrow-right.svg?url';
@@ -11,52 +12,52 @@ import arrowRight from '../assets/icon-arrow-right.svg?url';
  * @returns The pullscreen layout with title, description, and start button
  */
 const Pullscreen = () => {
+  const { t, i18n } = useTranslation();
+  const langPrefix = i18n.language === 'es' ? '/es' : '';
+
   return (
     <div
       className="fixed inset-0 overflow-hidden"
       onClick={() => {
-        window.location.href = '/select';
+        window.location.href = `${langPrefix}/select`;
       }}
     >
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
-        <div className="max-w-[934px]">
+        <div
+          className={
+            i18n.language === 'es' ? 'max-w-[1200px]' : 'max-w-[934px]'
+          }
+        >
           {/* Title */}
           <div className="text-center mb-8">
             <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
-              RECOUNTING
+              {t('pullscreen.title').split(' ').slice(0, 1).join(' ')}
             </h1>
             <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
-              RECONSTRUCTION
+              {t('pullscreen.title').split(' ').slice(1).join(' ')}
             </h1>
           </div>
 
           {/* Subtitle */}
           <p className="text-3xl font-semibold text-pullscreen-text  mb-8 ">
-            Emancipation brought opportunity but it did not equal equality.
+            {t('pullscreen.subtitle')}
           </p>
 
           {/* Description */}
           <div className="text-2xl text-pullscreen-text font-medium mb-12 leading-relaxed">
-            <p>
-              On June 19, 1865, Union General Gordon Granger arrived in
-              Galveston to announce that over 250,000 enslaved people in Texas
-              were free. After the Civil War ended, the state entered a period
-              of Reconstruction. This era radically reshaped government and
-              redefined formerly enslaved people's rights as citizens. Black
-              Texans forged new paths forward while confronting racist policy
-              making.
-            </p>
+            <p>{t('pullscreen.description')}</p>
           </div>
         </div>
 
         {/* Start Button */}
         <Button
           as="a"
-          href="/select"
+          href={`${langPrefix}/select`}
           className="flex items-center gap-2 [view-transition-name:start-button]"
         >
-          START <img src={arrowRight} alt="Arrow Right" className="w-11 h-4" />
+          {t('common.start')}{' '}
+          <img src={arrowRight} alt="Arrow Right" className="w-11 h-4" />
         </Button>
       </div>
       <Woodblocks />
@@ -65,5 +66,3 @@ const Pullscreen = () => {
 };
 
 export default Pullscreen;
-
-

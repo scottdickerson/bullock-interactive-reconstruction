@@ -1,7 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DetailOptionButton from './DetailOptionButton';
-import { contentData } from '../data/content';
+import { getContentData } from '../data/content';
 import { Category } from '../utils/categories';
+import { en } from '../translations/en';
+
+// Mock translation function for Storybook
+const mockT = (key: string) => {
+  const keys = key.split('.');
+  let value: any = en;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value;
+};
 
 const meta: Meta<typeof DetailOptionButton> = {
   title: 'Components/DetailOptionButton',
@@ -56,7 +67,7 @@ const meta: Meta<typeof DetailOptionButton> = {
 export default meta;
 type Story = StoryObj<typeof DetailOptionButton>;
 
-const agricultureOptions = contentData[Category.Agriculture].options;
+const agricultureOptions = getContentData(Category.Agriculture, mockT as any).options;
 
 export const Collapsed: Story = {
   args: {

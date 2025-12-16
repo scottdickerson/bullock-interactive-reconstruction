@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SelectScreen from '../../screens/SelectScreen';
+import I18nProvider from '../../components/I18nProvider';
+
+export function getStaticPaths() {
+  return [
+    // English (default) - no lang prefix
+    { params: {lang: 'en' as const} },
+    // Spanish - with 'es' prefix
+    { params: { lang: 'es' as const } },
+    { params: { lang: undefined } },
+  ];
+}
+---
+
+<Layout title="Reconstruction Era Texans" lang={Astro.params.lang}>
+  <I18nProvider lang={Astro.params.lang} client:load>
+    <SelectScreen client:load />
+  </I18nProvider>
+</Layout>
+
