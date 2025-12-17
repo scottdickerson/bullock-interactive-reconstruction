@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import ArtifactZoomDialog from './ArtifactZoomDialog';
+import ZoomModal from './ZoomModal';
 import Button from './Button';
 import { Category } from '../utils/categories';
 import { getCategoryArtifactUrl } from '../utils/categories';
 
-const meta: Meta<typeof ArtifactZoomDialog> = {
-  title: 'Components/ArtifactZoomDialog',
-  component: ArtifactZoomDialog,
+const meta: Meta<typeof ZoomModal> = {
+  title: 'Components/ZoomModal',
+  component: ZoomModal,
   parameters: {
     layout: 'fullscreen',
   },
@@ -33,7 +33,7 @@ const meta: Meta<typeof ArtifactZoomDialog> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ArtifactZoomDialog>;
+type Story = StoryObj<typeof ZoomModal>;
 
 /**
  * Interactive wrapper component for stories that manages dialog state
@@ -54,7 +54,7 @@ const InteractiveWrapper = (args: Story['args']) => {
       }}
     >
       <Button onClick={() => setIsOpen(true)}>Open Artifact Dialog</Button>
-      <ArtifactZoomDialog {...args} isOpen={isOpen} onOpenChange={setIsOpen} />
+      <ZoomModal {...args} isOpen={isOpen} onOpenChange={setIsOpen} />
     </div>
   );
 };
@@ -112,3 +112,4 @@ export const Default: Story = {
     alt: 'Artifact',
   },
 };
+

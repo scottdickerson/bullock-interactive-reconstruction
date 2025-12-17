@@ -11,7 +11,7 @@ import { Category, slugToCategory } from '../utils/categories';
  * @returns The select screen layout with category buttons
  */
 const SelectScreen = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const selectScreenData = getSelectScreenData(t);
 
   return (
@@ -64,6 +64,3 @@ const SelectScreen = () => {
 };
 
 export default SelectScreen;
-
-
-

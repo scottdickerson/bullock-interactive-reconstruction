@@ -3,13 +3,14 @@ import DetailOptionButton from './DetailOptionButton';
 import { getContentData } from '../data/content';
 import { Category } from '../utils/categories';
 import { en } from '../translations/en';
+import type { TFunction } from 'i18next';
 
 // Mock translation function for Storybook
 const mockT = (key: string) => {
   const keys = key.split('.');
-  let value: any = en;
+  let value: unknown | string = en;
   for (const k of keys) {
-    value = value?.[k];
+    value = (value as unknown as Record<string, string>)?.[k];
   }
   return value;
 };
@@ -67,7 +68,10 @@ const meta: Meta<typeof DetailOptionButton> = {
 export default meta;
 type Story = StoryObj<typeof DetailOptionButton>;
 
-const agricultureOptions = getContentData(Category.Agriculture, mockT as any).options;
+const agricultureOptions = getContentData(
+  Category.Agriculture,
+  mockT as TFunction
+).options;
 
 export const Collapsed: Story = {
   args: {

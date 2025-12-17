@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
+import I18nProvider from '../src/components/I18nProvider';
 
 const preview: Preview = {
   parameters: {
@@ -31,6 +32,13 @@ const preview: Preview = {
       ],
     },
   },
+  decorators: [
+    Story => (
+      <I18nProvider lang="en">
+        <Story />
+      </I18nProvider>
+    ),
+  ],
 };
 
 export default preview;

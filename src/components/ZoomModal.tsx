@@ -3,9 +3,9 @@ import FadeInModal from './FadeInModal';
 import closeIcon from '../assets/icon-close.svg?url';
 
 /**
- * Props for the ArtifactZoomDialog component
+ * Props for the ZoomModal component
  */
-interface ArtifactZoomDialogProps {
+interface ZoomModalProps {
   /** Whether the dialog is open */
   isOpen: boolean;
   /** Callback function when the dialog open state changes */
@@ -20,15 +20,15 @@ interface ArtifactZoomDialogProps {
  * A fullscreen dialog component that displays an artifact image in a zoomed view.
  * Shows the image centered with a close button positioned at the bottom right.
  *
- * @param props - ArtifactZoomDialog component props
+ * @param props - ZoomModal component props
  * @returns A fullscreen dialog with the artifact image
  */
-const ArtifactZoomDialog = ({
+const ZoomModal = ({
   isOpen,
   onOpenChange,
   imageUrl,
   alt,
-}: ArtifactZoomDialogProps) => {
+}: ZoomModalProps) => {
   return (
     <FadeInModal
       isOpen={isOpen}
@@ -40,7 +40,7 @@ const ArtifactZoomDialog = ({
         className: 'bg-black/80',
       }}
     >
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="aspect-video w-[1600px]">
         <div className="relative">
           <img
             src={imageUrl}
@@ -61,4 +61,5 @@ const ArtifactZoomDialog = ({
   );
 };
 
-export default ArtifactZoomDialog;
+export default ZoomModal;
+

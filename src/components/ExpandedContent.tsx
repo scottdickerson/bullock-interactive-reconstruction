@@ -10,7 +10,7 @@ import closeIcon from '../assets/icon-close.svg?url';
 import zoomIcon from '../assets/zoom.svg?url';
 import type { Category } from '../utils/categories';
 import { getCategoryArtifactUrl } from '../utils/categories';
-import ArtifactZoomDialog from './ArtifactZoomDialog';
+import ZoomModal from './ZoomModal';
 
 /**
  * Props for the ExpandedContent component
@@ -47,7 +47,7 @@ const ExpandedContent = ({
   const isArtifactOption = !isContentOption(option);
   const artifactImageUrl = isArtifactOption
     ? getCategoryArtifactUrl(category)
-    : null;
+    : option.imageUrl;
 
   return (
     <div
@@ -74,17 +74,15 @@ const ExpandedContent = ({
         <div className="mb-24 mx-16">
           {option.imageUrl ? (
             <div
-              className={classNames('relative', {
-                'cursor-pointer': isArtifactOption,
-              })}
-              onClick={() => isArtifactOption && setIsZoomDialogOpen(true)}
+              className={classNames('relative')}
+              onClick={() => setIsZoomDialogOpen(true)}
             >
               <img
                 src={option.imageUrl}
                 alt={option.title}
                 className=" h-[390px] object-cover rounded-lg mb-4 bg-black aspect-ratio-[831/1156]"
               />
-              {isExpanded && isArtifactOption && (
+              {isExpanded && (
                 <img
                   src={zoomIcon}
                   alt="Zoom"
@@ -95,9 +93,7 @@ const ExpandedContent = ({
           ) : (
             <div className="w-full h-64 rounded-lg mb-4 opacity-80"></div>
           )}
-          <p className="text-details text-sm mb-2 text-center">
-            {option.image}
-          </p>
+          <p className="text-details text-sm mb-2">{option.image}</p>
         </div>
         {isContentOption(option) && (
           <>
@@ -129,14 +125,12 @@ const ExpandedContent = ({
           <img src={closeIcon} alt="Close" />
         </Button>
       </div>
-      {isArtifactOption && artifactImageUrl && (
-        <ArtifactZoomDialog
-          isOpen={isZoomDialogOpen}
-          onOpenChange={setIsZoomDialogOpen}
-          imageUrl={artifactImageUrl}
-          alt={option.title}
-        />
-      )}
+      <ZoomModal
+        isOpen={isZoomDialogOpen}
+        onOpenChange={setIsZoomDialogOpen}
+        imageUrl={artifactImageUrl}
+        alt={option.title}
+      />
     </div>
   );
 };

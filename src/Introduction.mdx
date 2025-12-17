@@ -77,11 +77,11 @@ Each category has:
 
 **Reusable Components:**
 
-- **`FadeInModal`** - Base modal component that handles fade-in and fade-out transitions. Wraps Radix UI Dialog to provide smooth opacity animations. Used by `ArtifactZoomDialog` to create fullscreen modals with delayed fade-in effects. Manages internal state to ensure animations work correctly even when the component is removed from the DOM.
+- **`FadeInModal`** - Base modal component that handles fade-in and fade-out transitions. Wraps Radix UI Dialog to provide smooth opacity animations. Used by `ZoomModal` to create fullscreen modals with delayed fade-in effects. Manages internal state to ensure animations work correctly even when the component is removed from the DOM.
 
-- **`ArtifactZoomDialog`** - Fullscreen dialog for viewing artifact images in detail. Built on top of `FadeInModal` with a fullscreen variant. Used in `ExpandedContent` when users click on artifact images (only shown for "View Artifact" options). Displays the artifact image centered with a close button positioned relative to the image at the bottom right.
+- **`ZoomModal`** - Fullscreen dialog for viewing artifact images in detail. Built on top of `FadeInModal` with a fullscreen variant. Used in `ExpandedContent` when users click on artifact images (only shown for "View Artifact" options). Displays the artifact image centered with a close button positioned relative to the image at the bottom right.
 
-- **`ExpandedContent`** - Displays the expanded content when a detail option is clicked. Used inside `DetailOptionButton` to show the full content including images, descriptions, and text. Features fade-in/out animations synchronized with the button expansion. For artifact options, it shows a zoom icon overlay and opens `ArtifactZoomDialog` when the image is clicked. Includes a close button at the bottom center.
+- **`ExpandedContent`** - Displays the expanded content when a detail option is clicked. Used inside `DetailOptionButton` to show the full content including images, descriptions, and text. Features fade-in/out animations synchronized with the button expansion. For artifact options, it shows a zoom icon overlay and opens `ZoomModal` when the image is clicked. Includes a close button at the bottom center.
 
 - **`DetailOptionButton`** - Interactive button component used in `DetailScreen` to display the three content options (New Opportunities, Challenges and Dangers, View Artifact). Features smooth expand/collapse animations with position transitions. When collapsed, buttons are positioned at fixed vertical positions. When expanded, the button fills the container and shows `ExpandedContent`. Only one button can be expanded at a time.
 
