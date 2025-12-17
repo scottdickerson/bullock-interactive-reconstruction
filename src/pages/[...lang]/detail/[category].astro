@@ -2,7 +2,9 @@
 import Layout from '../../../layouts/Layout.astro';
 import DetailScreen from '../../../screens/DetailScreen';
 import I18nProvider from '../../../components/I18nProvider';
-import { Category as CategoryEnum, categoryToSlug } from '../../../utils/categories';
+import { Category as CategoryEnum, categoryToSlug, slugToCategory } from '../../../utils/categories';
+import { getServerTranslation } from '../../../lib/i18n-server';
+import { getContentData } from '../../../data/content';
 
 export function getStaticPaths() {
   const categories = Object.values(CategoryEnum);
@@ -11,6 +13,10 @@ export function getStaticPaths() {
   // Generate paths for each category with and without lang
   categories.forEach(category => {
     const categorySlug = categoryToSlug(category);
+     // No lang prefix
+     paths.push({
+      params: { category: categorySlug, lang: undefined },
+    });
 
     // Spanish - with 'es' prefix
     paths.push({
@@ -22,10 +28,7 @@ export function getStaticPaths() {
       params: { lang: 'en', category: categorySlug },
     });
 
-    // No lang prefix
-    paths.push({
-      params: { category: categorySlug, lang: undefined },
-    });
+   
   });
 
   return paths;
@@ -34,11 +37,16 @@ export function getStaticPaths() {
 // Extract lang from params - if lang array exists and first element is 'es', use Spanish
 const lang = Astro.params.lang === 'es' ? 'es' : 'en';
 const { category } = Astro.params;
+
+// Get server-side translations for this language
+const t = getServerTranslation(lang);
+const categoryEnum = slugToCategory(category || 'agriculture') || CategoryEnum.Agriculture;
+const contentData = getContentData(categoryEnum, t);
 ---
 
 <Layout title="Reconstruction Era Texans - Details" category={category} lang={lang}>
   <I18nProvider lang={lang} client:load>
-    <DetailScreen category={category || 'agriculture'} client:load />
+    <DetailScreen category={category || 'agriculture'} initialContentData={contentData} client:load />
   </I18nProvider>
 </Layout>
 

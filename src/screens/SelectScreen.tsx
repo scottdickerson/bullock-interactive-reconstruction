@@ -4,15 +4,24 @@ import { getSelectScreenData } from '../data/content';
 import { Category, slugToCategory } from '../utils/categories';
 
 /**
+ * Props for the SelectScreen component
+ */
+interface SelectScreenProps {
+  /** Initial data from server-side rendering (optional) */
+  initialData?: ReturnType<typeof getSelectScreenData>;
+}
+
+/**
  * The category selection screen component that displays available categories.
  * Shows a header with description and a grid of category selection buttons.
  * Each button links to the corresponding detail page.
  *
+ * @param props - SelectScreen component props
  * @returns The select screen layout with category buttons
  */
-const SelectScreen = () => {
+const SelectScreen = ({ initialData }: SelectScreenProps = {}) => {
   const { t } = useTranslation();
-  const selectScreenData = getSelectScreenData(t);
+  const selectScreenData = initialData || getSelectScreenData(t);
 
   return (
     <div className="relative w-full overflow-hidden">

@@ -11,6 +11,8 @@ import { slugToCategory, Category } from '../utils/categories';
 interface DetailScreenProps {
   /** The category slug from the URL (e.g., 'agriculture', 'politics') */
   category?: string;
+  /** Initial content data from server-side rendering (optional) */
+  initialContentData?: ContentData;
 }
 
 /**
@@ -23,6 +25,7 @@ interface DetailScreenProps {
  */
 const DetailScreen = ({
   category: categorySlug = 'agriculture',
+  initialContentData,
 }: DetailScreenProps) => {
   const { t } = useTranslation();
   const [expandedOption, setExpandedOption] = useState<
@@ -44,7 +47,8 @@ const DetailScreen = ({
     setExpandedOption(null);
   };
 
-  const content = getContentData(category, t);
+  // Use server-side content data if provided, otherwise get from client-side translations
+  const content = initialContentData || getContentData(category, t);
 
   return (
     <div className="relative h-full pr-8 flex gap-8">
