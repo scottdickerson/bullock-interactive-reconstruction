@@ -15,6 +15,11 @@ const mockT = (key: string) => {
   return value;
 };
 
+const agricultureOptions = getContentData(
+  Category.Agriculture,
+  mockT as TFunction
+).options;
+
 const meta: Meta<typeof ExpandedContent> = {
   title: 'Components/ExpandedContent',
   component: ExpandedContent,
@@ -51,15 +56,16 @@ const meta: Meta<typeof ExpandedContent> = {
       description: 'Callback when the close button is clicked',
     },
   },
+  args: {
+    option: agricultureOptions['New Opportunities'],
+    isExpanded: true,
+    onClose: () => {},
+    category: Category.Agriculture,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof ExpandedContent>;
-
-const agricultureOptions = getContentData(
-  Category.Agriculture,
-  mockT as TFunction
-).options;
 
 export const Expanded: Story = {
   args: {
@@ -92,5 +98,3 @@ export const ChallengesAndDangers: Story = {
     onClose: () => {},
   },
 };
-
-
