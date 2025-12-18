@@ -9,7 +9,7 @@ import {
 import closeIcon from '../assets/icon-close.svg?url';
 import zoomIcon from '../assets/zoom.svg?url';
 import type { Category } from '../utils/categories';
-import { getCategoryArtifactUrl } from '../utils/categories';
+import { getCategoryZoomImage, type ZoomOptionType } from '../utils/categories';
 import ZoomModal from './ZoomModal';
 
 /**
@@ -45,9 +45,24 @@ const ExpandedContent = ({
   const [isZoomDialogOpen, setIsZoomDialogOpen] = useState(false);
   // Artifact option is the one that is NOT a content option (doesn't have content/description)
   const isArtifactOption = !isContentOption(option);
-  const artifactImageUrl = isArtifactOption
-    ? getCategoryArtifactUrl(category)
-    : option.imageUrl;
+
+  // Determine option type from imageUrl path
+  const getOptionType = (): ZoomOptionType => {
+    if (isArtifactOption) {
+      return 'artifact';
+    }
+    // Check imageUrl to determine option type
+    if (option.imageUrl?.includes('new-opportunities')) {
+      return 'new-opportunities';
+    }
+    if (option.imageUrl?.includes('challenges-and-dangers')) {
+      return 'challenges-and-dangers';
+    }
+    // Default fallback
+    return 'artifact';
+  };
+
+  const zoomImageUrl = getCategoryZoomImage(category, getOptionType());
 
   return (
     <div
@@ -67,11 +82,11 @@ const ExpandedContent = ({
       }}
       {...props}
     >
-      <div className="p-6 border-4 border-yellow rounded-lg h-full pt-10">
-        <h3 className="text-2xl font-bold text-yellow mb-10 text-center">
+      <div className=" p-14 pt-16 pb-18 border-4 border-yellow rounded-lg h-full">
+        <h3 className="text-2xl font-bold text-yellow mb-6 text-center">
           {option.title}
         </h3>
-        <div className="mb-24 mx-16">
+        <div className="mb-16 mx-10">
           {option.imageUrl ? (
             <div
               className={classNames('relative')}
@@ -97,10 +112,10 @@ const ExpandedContent = ({
         </div>
         {isContentOption(option) && (
           <>
-            <h4 className="text-details font-bold text-2xl mb-6 italic leading-relaxed">
+            <h4 className="text-details font-bold text-2xl mb-6 italic leading-[1.2]">
               {option.description}
             </h4>
-            <p className="text-details leading-relaxed text-xl font-medium">
+            <p className="text-details leading-snug text-xl font-medium">
               {option.content}
             </p>
           </>
@@ -108,7 +123,7 @@ const ExpandedContent = ({
       </div>
       <div
         className={classNames(
-          'absolute bottom-10 w-full flex justify-center',
+          'absolute bottom-14 w-full flex justify-center',
           className
         )}
         style={{
@@ -120,7 +135,7 @@ const ExpandedContent = ({
       >
         <Button
           onClick={onClose}
-          className="py-2 px-4 mx-auto  z-100 cursor-pointer"
+          className="py-2 px-4 mx-auto z-100 cursor-pointer"
         >
           <img src={closeIcon} alt="Close" />
         </Button>
@@ -128,7 +143,7 @@ const ExpandedContent = ({
       <ZoomModal
         isOpen={isZoomDialogOpen}
         onOpenChange={setIsZoomDialogOpen}
-        imageUrl={artifactImageUrl}
+        imageUrl={zoomImageUrl}
         alt={option.title}
       />
     </div>

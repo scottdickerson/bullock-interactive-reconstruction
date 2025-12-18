@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ZoomModal from './ZoomModal';
 import Button from './Button';
 import { Category } from '../utils/categories';
-import { getCategoryArtifactUrl } from '../utils/categories';
+import { getCategoryZoomImage } from '../utils/categories';
 
 const meta: Meta<typeof ZoomModal> = {
   title: 'Components/ZoomModal',
@@ -62,7 +62,7 @@ const InteractiveWrapper = (args: Story['args']) => {
 export const Agriculture: Story = {
   render: () => (
     <InteractiveWrapper
-      imageUrl={getCategoryArtifactUrl(Category.Agriculture)}
+      imageUrl={getCategoryZoomImage(Category.Agriculture, 'artifact')}
       alt="Agriculture Artifact"
     />
   ),
@@ -71,7 +71,7 @@ export const Agriculture: Story = {
 export const CommunityLeadership: Story = {
   render: () => (
     <InteractiveWrapper
-      imageUrl={getCategoryArtifactUrl(Category.CommunityLeadership)}
+      imageUrl={getCategoryZoomImage(Category.CommunityLeadership, 'artifact')}
       alt="Community Leadership Artifact"
     />
   ),
@@ -80,7 +80,7 @@ export const CommunityLeadership: Story = {
 export const Politics: Story = {
   render: () => (
     <InteractiveWrapper
-      imageUrl={getCategoryArtifactUrl(Category.Politics)}
+      imageUrl={getCategoryZoomImage(Category.Politics, 'artifact')}
       alt="Politics Artifact"
     />
   ),
@@ -89,7 +89,7 @@ export const Politics: Story = {
 export const Education: Story = {
   render: () => (
     <InteractiveWrapper
-      imageUrl={getCategoryArtifactUrl(Category.Education)}
+      imageUrl={getCategoryZoomImage(Category.Education, 'artifact')}
       alt="Education Artifact"
     />
   ),
@@ -98,7 +98,7 @@ export const Education: Story = {
 export const Entrepreneurship: Story = {
   render: () => (
     <InteractiveWrapper
-      imageUrl={getCategoryArtifactUrl(Category.Entrepreneurship)}
+      imageUrl={getCategoryZoomImage(Category.Entrepreneurship, 'artifact')}
       alt="Entrepreneurship Artifact"
     />
   ),
@@ -108,7 +108,7 @@ export const Default: Story = {
   args: {
     isOpen: true,
     onOpenChange: () => {},
-    imageUrl: getCategoryArtifactUrl(Category.Agriculture),
+    imageUrl: getCategoryZoomImage(Category.Agriculture, 'artifact'),
     alt: 'Artifact',
   },
 };

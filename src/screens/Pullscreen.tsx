@@ -35,11 +35,13 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
   const { t, i18n } = useTranslation();
   const currentLang = langProp || i18n.language;
   const langPrefix = currentLang === 'es' ? '/es' : '';
-  
+
   // Use server-side translations if provided, otherwise use client-side translations
   const title = translations?.pullscreen?.title || t('pullscreen.title');
-  const subtitle = translations?.pullscreen?.subtitle || t('pullscreen.subtitle');
-  const description = translations?.pullscreen?.description || t('pullscreen.description');
+  const subtitle =
+    translations?.pullscreen?.subtitle || t('pullscreen.subtitle');
+  const description =
+    translations?.pullscreen?.description || t('pullscreen.description');
   const startText = translations?.common?.start || t('common.start');
 
   return (
@@ -52,16 +54,14 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
         <div
-          className={
-            currentLang === 'es' ? 'max-w-[1200px]' : 'max-w-[934px]'
-          }
+          className={currentLang === 'es' ? 'max-w-[1200px]' : 'max-w-[934px]'}
         >
           {/* Title */}
           <div className="text-center mb-8">
-            <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
+            <h1 className="text-[100px] leading-none font-extrabold text-yellow drop-shadow-lg animate-pulse2">
               {title.split(' ').slice(0, 1).join(' ')}
             </h1>
-            <h1 className="text-[100px] leading-none  font-extrabold text-yellow drop-shadow-lg animate-float">
+            <h1 className="text-[100px] leading-none font-extrabold text-yellow drop-shadow-lg animate-pulse2">
               {title.split(' ').slice(1).join(' ')}
             </h1>
           </div>

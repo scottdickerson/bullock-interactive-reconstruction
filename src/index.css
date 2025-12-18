@@ -150,6 +150,7 @@
 @theme {
   --font-family-metropolis: 'Metropolis', sans-serif;
   --animate-float: float 3.5s ease-in-out infinite;
+  --animate-pulse2: pulse2 4s ease-in-out infinite;
   --color-details: #f2efe1;
   --color-button: #f2efe1;
   --color-pullscreen-text: #e6ddc8;
@@ -321,6 +322,17 @@
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+/* Pulse2 Animation - Subtle scale animation */
+@keyframes pulse2 {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
   }
 }
 

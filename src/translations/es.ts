@@ -43,7 +43,7 @@ export const es = {
           content:
             'Los terratenientes explotaban la mano de obra de los texanos negros para limitar su libertad financiera. Las leyes de aprendizaje y arrendamiento agrícola permitían a los terratenientes atrapar a los trabajadores en contratos abusivos que los ataban a la tierra. Al ser propietario de su terreno, Ransom conservaba todas las ganancias de su trabajo. El éxito financiero permitió a Ransom y Sarah mejorar la calidad de vida y la educación de su familia.',
           image:
-            'Esta fotografía de una familia en su granja muestra cómo pudo haber sido la vida para los Williams. La propiedad de los Williams incluía una casa familiar, una edificación auxiliar, un estanque para el ganado, pastizales, campos cultivados y corrales. Familia y carreta de bueyes frente a la casa, ca. 1888 // Cortesía de The Cook Collection, The Valentine',
+            'Familia y carreta de bueyes frente a la casa, ca. 1888 // Cortesía de The Cook Collection, The Valentine',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -52,7 +52,7 @@ export const es = {
           content:
             'Después de la muerte de Ransom, Sarah y sus hijos permanecieron en la granja durante cuatro años más. Pero la vida en el Texas rural ofrecía pocas opciones de empleo y un mayor riesgo de exposición a la violencia racial. Los legisladores trabajaban activamente para eliminar las protecciones para los texanos negros. Finalmente, la familia Williams se mudó a una colonia de libertad en el este de Austin.',
           image:
-            'Muchos texanos negros se mudaron an Austin en busca de mejores oportunidades tras la Emancipación. A principios de 1900, la Calle Sexta (que aparece en la imagen) albergaba varios negocios propiedad de personas negras. Centro de Austin, 1920 // Cortesía del Cento de Historia de Austin, Biblioteca Pública de Austin',
+            'Centro de Austin, 1920 // Cortesía del Cento de Historia de Austin, Biblioteca Pública de Austin',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
@@ -73,7 +73,7 @@ export const es = {
           content:
             'Los texanos negros debían navegar espacios segregados y encontrar oportunidades laborales justas. Se reunían en iglesias fundadas por y para las comunidades negras. Como predicador y respetado líder comunitario, Duval ayudó a otros a encontrar apoyo, educación y empleo.',
           image:
-            'Las personas liberadas fundaron iglesias de distintas denominaciones para responder a las necesidades de la comunidad. Mt. Zion (arriba) fue la primera iglesia bautista de San Antonio, fundada en 1871. Iglesia Bautista Mount Zion, San Antonio, Texas // Cortesía de Colecciones Especiales de UTSA, San Antonio',
+            'Iglesia Bautista Mount Zion, San Antonio, Texas // Cortesía de Colecciones Especiales de UTSA, San Antonio',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -82,7 +82,7 @@ export const es = {
           content:
             'Los Códigos Negros fueron la base de las leyes de segregación Jim Crow. A pesar de ser dueño de su propio negocio, Duval se vio obligado a seguir estas reglas para evitar la violencia. Los clientes blancos entraban a su barbería por la puerta principal. Los clientes negros y tejanos lo hacían por la puerta trasera, desde el callejón.',
           image:
-            'La libertad no vino acompañada de un acceso igualitario a los espacios públicos. La mayoría de los negocios y restaurantes, como el café que aparece aquí, servían selectivamente a los clientes según su raza. Negocios en la cuadra 500 de East Commerce Street, San Antonio, Texas, 1917 // Cortesía de Colecciones Especiales de UTSA, San Antonio',
+            'Negocios en la cuadra 500 de East Commerce Street, San Antonio, Texas, 1917 // Cortesía de Colecciones Especiales de UTSA, San Antonio',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
@@ -103,7 +103,7 @@ export const es = {
           content:
             'Richard Allen fue uno de los primeros hombres negros que sirvieron como representantes en la Legislatura Estatal de Texas. Promovió leyes para aumentar el acceso a la educación y garantizar fondos de pensiones para veteranos sin importar la raza. Allen también contribuyó a dar forma a la infraestructura de Texas al liderar el Comité de Caminos y Puentes.',
           image:
-            'Este retrato al carbón de Allen, fechado en 1905, probablemente fue realizado a partir de una fotografía original tomada durante su tiempo en el cargo. Retrato de Richard Allen // Cortesía de la Colección General de Fotografías, Colecciones Especiales de UTSA, San Antonio',
+            'Retrato de Richard Allen // Cortesía de la Colección General de Fotografías, Colecciones Especiales de UTSA, San Antonio',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -112,7 +112,7 @@ export const es = {
           content:
             'Richard Allen fue reelegido para la Decimotercera Legislatura en 1873. Gustave Cook, su oponente blanco, afirmó que los votantes negros de Allen no estaban debidamente registrados. La Legislatura del Estado decidió entonces darle el escaño a Cook. En los años siguientes, la discriminación sancionada por el estado y la violencia racial aumentaron. Para 1879, Allen instó públicamente a los texanos negros a mudarse a Kansas en busca de seguridad y mejores oportunidades.',
           image:
-            'Kansas ofrecía tierras gratuitas a los colonos dispuestos a cumplir con estándares de mejora. Muchos texanos negros se mudaron a comunidades como Nicodemus (mostrada aquí) a medida que las condiciones en Texas empeoraban. Distrito Histórico de Nicodemus, Condado de Graham, KS // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
+            'Distrito Histórico de Nicodemus, Condado de Graham, KS // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
@@ -133,7 +133,7 @@ export const es = {
           content:
             'La ley estatal de Texas prohibía a las personas esclavizadas aprender a leer o escribir. Los esclavizadores temían que la educación hiciera más difícil controlar a las personas que mantenían cautivas. Después de 1865, la Oficina de Libertos lideró los esfuerzos para fundar escuelas para los texanos negros. Los registros de la Oficina muestran que para 1870 había 150 escuelas que inscribían a 9,086 estudiantes negros en todo el estado.',
           image:
-            'Prairie View A&M (fundada en 1876) fue la primera universidad estatal para texanos negros. Muchos educadores, como el Sr. Hogg (en la imagen), se graduaron de Prairie View. Escuela afroamericana en Diboll, Texas, con el maestro J. W. Hogg y sus estudiantes // Cortesía de The History Center',
+            'Escuela afroamericana en Diboll, Texas, con el maestro J. W. Hogg y sus estudiantes // Cortesía de The History Center',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -142,7 +142,7 @@ export const es = {
           content:
             'Los legisladores blancos crearon leyes conocidas como los Códigos Negros para restringir los derechos de los texanos negros. Estas leyes también afectaban la educación. Las escuelas negras no podían acceder al fondo estatal para escuelas públicas. Los estudiantes negros no podían asistir a instituciones para blancos. Estas leyes establecieron escuelas segregadas. En consecuencia, se asignaron menos recursos a las escuelas que atendían a estudiantes negros y de ascendencia mexicana.',
           image:
-            'Estudiantes de una comunidad de libertad en Austin posan con su maestro. Grupo de estudiantes negros, década de 1870 // Cortesía de las Bibliotecas de la Universidad del Norte de Texas, The Portal to Texas History, con crédito al Centro de Historia de Austin, Biblioteca Pública de Austin',
+            'Grupo de estudiantes negros, década de 1870 // Cortesía de las Bibliotecas de la Universidad del Norte de Texas, The Portal to Texas History, con crédito al Centro de Historia de Austin, Biblioteca Pública de Austin',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
@@ -163,7 +163,7 @@ export const es = {
           content:
             'La Convención Constitucional de Texas de 1866 otorgó a los texanos negros el derecho a firmar contratos, demandar y poseer propiedades. Thompson ejerció estos derechos al establecer su propio negocio exitoso. A medida que aumentaba el valor de su propiedad en la calle Elm, Thompson enfrentó múltiples demandas relacionadas con su propiedad. Ganó la última demanda en 1884 y conservó el título de su terreno.',
           image:
-            'Esta fotografía muestra la calle Elm, donde Thompson poseía varios lotes. Su propiedad aumentó de valor a medida que la zona se transformó en un animado centro comercial. Calle Elm, Dallas, Texas // Cortesía de la Biblioteca DeGolyer, Universidad Metodista del Sur',
+            'Calle Elm, Dallas, Texas // Cortesía de la Biblioteca DeGolyer, Universidad Metodista del Sur',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -172,7 +172,7 @@ export const es = {
           content:
             'Mientras Thompson prosperaba, otras lavanderas negras eran injustamente mal remuneradas por su arduo trabajo. La discriminación salarial se utilizaba como una herramienta de opresión. Pero los texanos negros crearon sus propios caminos hacia adelante. En 1877, trabajadoras domésticas negras en Galveston organizaron una huelga para exigir mejores salarios. Lavanderas, cocineras y sirvientas se unieron para buscar un cambio. Su acción colectiva fue parte de un creciente movimiento obrero en Texas.',
           image:
-            'Las mujeres negras enfrentaban desafíos adicionales para encontrar empleo debido a la discriminación combinada por raza y género. Lavar ropa les permitía organizar su propio horario mientras se ocupaban del hogar y cuidaban de la familia. Mujer afroamericana lavando ropa // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
+            'Mujer afroamericana lavando ropa // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
