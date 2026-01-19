@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { initGA, trackPageView } from '../scripts/analytics';
+import { initGA,  } from '../utils/analytics';
 
 /**
  * Analytics component that initializes Google Analytics and tracks page views.
  * Handles both initial page load and Astro view transitions for SPA-like navigation.
+ * Tracks session end when user navigates back to attract screen (home).
  * Returns null as it doesn't render any UI elements.
  *
  * @returns null (no UI rendering)
@@ -11,18 +12,7 @@ import { initGA, trackPageView } from '../scripts/analytics';
 const Analytics = () => {
   useEffect(() => {
     initGA();
-    trackPageView(window.location.pathname + window.location.search);
 
-    // Track page views on navigation (for Astro view transitions)
-    const handlePageLoad = () => {
-      trackPageView(window.location.pathname + window.location.search);
-    };
-
-    document.addEventListener('astro:page-load', handlePageLoad);
-
-    return () => {
-      document.removeEventListener('astro:page-load', handlePageLoad);
-    };
   }, []);
 
   return null;

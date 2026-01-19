@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Woodblocks from '../components/Woodblocks';
 import Button from '../components/Button';
 import arrowRight from '../assets/icon-arrow-right.svg?url';
+import { resetUserSession } from '../utils/analytics';
 
 /**
  * Props for the Pullscreen component
@@ -45,12 +46,13 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
   const startText = translations?.common?.start || t('common.start');
 
   return (
-    <div
+    <a
+      href={`${langPrefix}/select`}
       className="fixed inset-0 overflow-hidden"
       onClick={() => {
-        window.location.href = `${langPrefix}/select`;
+        resetUserSession();
       }}
-    >
+    > 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
         <div
@@ -79,16 +81,14 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
 
         {/* Start Button */}
         <Button
-          as="a"
-          href={`${langPrefix}/select`}
           className="flex items-center gap-2 [view-transition-name:start-button]"
         >
-          {startText}{' '}
+          {startText}
           <img src={arrowRight} alt="Arrow Right" className="w-11 h-4" />
         </Button>
       </div>
       <Woodblocks />
-    </div>
+    </a>
   );
 };
 

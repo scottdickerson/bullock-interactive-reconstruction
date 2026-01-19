@@ -1,0 +1,83 @@
+# Google Analytics Implementation
+
+This project uses Google Analytics 4 (GA4) with native gtag.js for tracking user interactions and sessions.
+
+## Overview
+
+The Google Analytics implementation is designed to track user sessions, page views, and custom events while providing the ability to reset user sessions when users return to the home screen.
+
+## Setup
+
+### Initialization
+
+Google Analytics is initialized in two places:
+
+1. **Layout.astro** - Loads the gtag.js script and initializes the dataLayer
+2. **Analytics Component** (`src/components/Analytics.tsx`) - Calls `initGA()` on component mount
+
+The tracking ID is read from the `PUBLIC_GA_TRACKING_ID` environment variable in `Layout.astro`.
+
+### Core Functions
+
+All analytics functionality is centralized in `src/utils/analytics.ts`:
+
+- **`initGA()`** - Initializes Google Analytics and sets a new client_id/user_id
+- **`trackEvent(eventName, parameters)`** - Tracks custom events
+- **`setLanguage(language)`** - Updates the language parameter in dataLayer
+- **`resetUserSession()`** - Resets the user session by deleting cookies and generating a new client_id
+
+## Session Management
+
+### Session Reset
+
+The `resetUserSession()` function is called when users interact with the home screen (Pullscreen) or select screen. This ensures each visit starts a fresh session.
+
+**What it does:**
+
+1. Deletes all Google Analytics cookies:
+   - `_ga` - Main GA cookie
+   - `_gid` - GA client ID cookie
+   - `_gat` - GA throttle cookie
+   - `_ga_*` - GA4 measurement ID specific cookies (pattern matched)
+
+2. Generates a new client_id in the format: `timestamp.random`
+
+3. Sets the new client_id and user_id via `gtag('config', ...)`
+
+4. Triggers a `session_start` event in the dataLayer
+
+**Where it's called:**
+
+- `src/screens/Pullscreen.tsx` - When clicking anywhere on the pullscreen
+- `src/screens/SelectScreen.tsx` - When interacting with the select screen
+
+## Cookie Management
+
+The implementation uses the `js-cookie` library to manage cookie deletion. Cookies are removed with `path: '/'` to ensure they're deleted across the entire site.
+
+## Language Tracking
+
+The language parameter is set in the dataLayer during initialization and can be updated using the `setLanguage()` function. Currently defaults to `'es'` during initialization.
+
+## Custom Events
+
+Custom events can be tracked using the `trackEvent()` function:
+
+```typescript
+trackEvent('event_name', { parameter1: 'value1', parameter2: 'value2' });
+```
+
+## Technical Details
+
+- **Library**: Native gtag.js (no wrapper libraries)
+- **Cookie Library**: js-cookie for cookie management
+- **Session Reset**: Manual cookie deletion + new client_id generation
+- **Format**: GA4 (Google Analytics 4)
+
+## Files
+
+- `src/utils/analytics.ts` - Core analytics functions
+- `src/components/Analytics.tsx` - React component that initializes GA
+- `src/layouts/Layout.astro` - Loads gtag.js script
+- `src/screens/Pullscreen.tsx` - Calls resetUserSession
+- `src/screens/SelectScreen.tsx` - Calls resetUserSession

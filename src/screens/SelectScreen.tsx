@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import CategorySelectButton from '../components/CategorySelectButton';
 import { getSelectScreenData } from '../data/content';
 import { Category, slugToCategory } from '../utils/categories';
+import { useEffect } from 'react';
+import { resetUserSession } from '../utils/analytics';
 
 /**
  * Props for the SelectScreen component
@@ -22,6 +24,10 @@ interface SelectScreenProps {
 const SelectScreen = ({ initialData }: SelectScreenProps = {}) => {
   const { t } = useTranslation();
   const selectScreenData = initialData || getSelectScreenData(t);
+
+  useEffect(() => {
+        resetUserSession();
+  }, []);
 
   return (
     <div className="relative w-full overflow-hidden">

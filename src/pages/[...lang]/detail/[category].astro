@@ -42,9 +42,10 @@ const { category } = Astro.params;
 const t = getServerTranslation(lang);
 const categoryEnum = slugToCategory(category || 'agriculture') || CategoryEnum.Agriculture;
 const contentData = getContentData(categoryEnum, t);
+const title = `Reconstruction Era Texans - ${categoryEnum}`;
 ---
 
-<Layout title="Reconstruction Era Texans - Details" category={category} lang={lang}>
+<Layout title={title} category={category} lang={lang}>
   <I18nProvider lang={lang} client:load>
     <DetailScreen category={category || 'agriculture'} initialContentData={contentData} client:load />
   </I18nProvider>

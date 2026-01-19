@@ -79,6 +79,7 @@ npm run format
 - React Router DOM
 - CSS View Transitions API
 - Vite (build tool)
+- Google Analytics 4 (gtag.js) - See [Google Analytics Documentation](src/GoogleAnalytics.mdx) for implementation details
 
 ## Browser Support
 
@@ -89,7 +90,7 @@ npm run format
 
 ## Project Structure
 
-```
+```text
 src/
 ├── pages/
 │   ├── Pullscreen.tsx    # Landing page

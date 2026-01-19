@@ -10,12 +10,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from './ui/dialog';
+import { trackEvent } from '../utils/analytics';
 
 /**
  * Props for the InactivityModal component
  */
 interface InactivityModalProps {
-  /** Time in milliseconds before showing the modal after user inactivity (default: 60000) */
+  /** Time in milliseconds before showing the modal after user inactivity (default: 90000) */
   inactivityTimeout?: number;
   /** Time in milliseconds before auto-navigating to home if no response after modal appears (default: 15000) */
   autoCloseTimeout?: number;
@@ -33,7 +34,7 @@ interface InactivityModalProps {
  * @returns A modal overlay with inactivity prompt, or null if not visible
  */
 const InactivityModal = ({
-  inactivityTimeout = 60000, // 60 seconds
+  inactivityTimeout = 90000, // 90 seconds
   autoCloseTimeout = 15000, // 15 seconds
   homePath = '/',
 }: InactivityModalProps) => {
@@ -107,6 +108,8 @@ const InactivityModal = ({
   const handleKeepReading = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
+      // Track timeout "No" event (user wants to keep reading)
+      trackEvent('ButtonPress_TimeoutNo');
       resetInactivityTimer();
     },
     [resetInactivityTimer]
@@ -116,6 +119,8 @@ const InactivityModal = ({
     (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
       event.preventDefault();
       event.stopPropagation();
+      // Track timeout "Yes" event (user clicked home) and session end
+      trackEvent('ButtonPress_TimeoutYes');
       window.location.href = homePath;
     },
     [homePath]

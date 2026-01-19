@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Button from './Button';
 import arrowLeft from '../assets/icon-arrow-left.svg?url';
 import homeIcon from '../assets/icon-home.svg?url';
+import { trackEvent } from '../utils/analytics';
 
 /**
  * Props for the NavigationButtons component
@@ -45,6 +46,17 @@ const NavigationButtons = ({
   const languageButtonText =
     lang === 'es' ? t('common.english') : t('common.español');
 
+  const handleHomeClick = () => {
+    // Track session end when HOME button is clicked
+    trackEvent('experience_end');
+  };
+
+  const handleLanguageToggle = () => {
+    // Track language toggle event
+    const targetLang = lang === 'es' ? 'en' : 'es';
+    trackEvent('language_toggle', { language: targetLang });
+  };
+
   return (
     <div
       className={`absolute  bottom-0 left-0 right-0 flex justify-between [view-transition-name:navigation-buttons] pb-24 ${className} text-details`}
@@ -65,14 +77,19 @@ const NavigationButtons = ({
           </Button>
         )}
         {showHome && (
-          <Button as="a" href={homeHref} className="flex items-center gap-2">
+          <Button
+            as="a"
+            href={homeHref}
+            className="flex items-center gap-2"
+            onClick={handleHomeClick}
+          >
             <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
             {t('common.home')}
           </Button>
         )}
       </div>
       {spanishHref && (
-        <Button as="a" href={spanishHref}>
+        <Button as="a" href={spanishHref} onClick={handleLanguageToggle}>
           {languageButtonText}
         </Button>
       )}
