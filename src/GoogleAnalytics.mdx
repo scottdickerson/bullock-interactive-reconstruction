@@ -59,6 +59,107 @@ The implementation uses the `js-cookie` library to manage cookie deletion. Cooki
 
 The language parameter is set in the dataLayer during initialization and can be updated using the `setLanguage()` function. Currently defaults to `'es'` during initialization.
 
+## Tracked Events
+
+The following events are tracked throughout the application:
+
+### Session Events
+
+- **`session_start`** - Triggered when a new user session begins (via `resetUserSession()`)
+  - Location: `src/utils/analytics.ts` - `resetUserSession()`
+  - Triggered: When users interact with the pullscreen or select screen
+
+### User Interaction Events
+
+- **`language_toggle`** - Triggered when user switches between English and Spanish
+  - Location: `src/components/NavigationButtons.tsx`
+  - Parameters:
+    - `language`: The target language (`'en'` or `'es'`)
+
+- **`ButtonPress_TimeoutNo`** - Triggered when user clicks "No" on the inactivity timeout modal (wants to keep reading)
+  - Location: `src/components/InactivityModal.tsx`
+  - Parameters: None
+
+- **`ButtonPress_TimeoutYes`** - Triggered when user clicks "Yes" on the inactivity timeout modal (wants to go home)
+  - Location: `src/components/InactivityModal.tsx`
+  - Parameters: None
+
+- **`{category}_{option}_zoom_image_open`** - Triggered when user opens the zoom modal to view an artifact image in detail
+  - Location: `src/components/ExpandedContent.tsx`
+  - Parameters: None
+  - Event naming pattern: `{category}_{option}_zoom_image_open`
+  - Examples:
+    - `agriculture_opportunities_zoom_image_open`
+    - `community_challenges_zoom_image_open`
+    - `politics_artifact_zoom_image_open`
+    - `education_opportunities_zoom_image_open`
+    - `entrepreneurship_challenges_zoom_image_open`
+
+- **`{category}_{option}_zoom_image_closed`** - Triggered when user closes the zoom modal (via close button or clicking outside)
+  - Location: `src/components/ExpandedContent.tsx`
+  - Parameters: None
+  - Event naming pattern: `{category}_{option}_zoom_image_closed`
+  - Examples:
+    - `agriculture_opportunities_zoom_image_closed`
+    - `community_challenges_zoom_image_closed`
+    - `politics_artifact_zoom_image_closed`
+    - `education_opportunities_zoom_image_closed`
+    - `entrepreneurship_challenges_zoom_image_closed`
+
+### Category Content Events
+
+These events are dynamically generated based on the category and content option selected. Events are tracked when users expand content options on the detail screen.
+
+**Event Naming Pattern:** `{category}_{option}`
+
+**Categories:**
+
+- `agriculture`
+- `community` (Community Leadership)
+- `politics`
+- `education`
+- `entrepreneurship`
+
+**Options:**
+
+- `opportunities` (New Opportunities)
+- `challenges` (Challenges and Dangers)
+- `artifact` (View Artifact)
+
+**Complete Event List:**
+
+**Agriculture:**
+
+- `agriculture_opportunities`
+- `agriculture_challenges`
+- `agriculture_artifact`
+
+**Community Leadership:**
+
+- `community_opportunities`
+- `community_challenges`
+- `community_artifact`
+
+**Politics:**
+
+- `politics_opportunities`
+- `politics_challenges`
+- `politics_artifact`
+
+**Education:**
+
+- `education_opportunities`
+- `education_challenges`
+- `education_artifact`
+
+**Entrepreneurship:**
+
+- `entrepreneurship_opportunities`
+- `entrepreneurship_challenges`
+- `entrepreneurship_artifact`
+
+**Location:** `src/screens/DetailScreen.tsx` - `getHotspotEventName()` function generates these event names
+
 ## Custom Events
 
 Custom events can be tracked using the `trackEvent()` function:
@@ -81,3 +182,15 @@ trackEvent('event_name', { parameter1: 'value1', parameter2: 'value2' });
 - `src/layouts/Layout.astro` - Loads gtag.js script
 - `src/screens/Pullscreen.tsx` - Calls resetUserSession
 - `src/screens/SelectScreen.tsx` - Calls resetUserSession
+
+## Deploying to Vercel
+
+When deploying to Vercel, the `PUBLIC_GA_TRACKING_ID` environment variable is set in the Vercel project settings.
+
+To set the environment variable, go to the Vercel project settings and add a new environment variable with the name `PUBLIC_GA_TRACKING_ID` and the value of the tracking ID.
+
+Then, run the following command to deploy the project:
+
+```bash
+vercel deploy
+```

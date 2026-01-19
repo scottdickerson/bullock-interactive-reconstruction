@@ -1,4 +1,6 @@
 import Cookies from 'js-cookie';
+import { Category } from './categories';
+import { ContentDataOptionEnum } from '../data/content';
 
 declare global {
   interface Window {
@@ -97,4 +99,36 @@ export const resetUserSession = () => {
 
   // Trigger session_start event
   window.dataLayer.push({ event: 'session_start' });
+};
+
+/**
+ * Generate GA4 event name from category and option
+ * @param category - The category enum
+ * @param option - The option key (ContentDataOptionEnum value)
+ * @returns The event name string (e.g., "agriculture_opportunities")
+ */
+export const getHotspotEventName = (
+  category: Category,
+  option: string
+): string => {
+  // Map category enum to event prefix
+  const categoryPrefixMap: Record<Category, string> = {
+    [Category.Agriculture]: 'agriculture',
+    [Category.CommunityLeadership]: 'community',
+    [Category.Politics]: 'politics',
+    [Category.Education]: 'education',
+    [Category.Entrepreneurship]: 'entrepreneurship',
+  };
+
+  // Map option enum to event suffix
+  const optionSuffixMap: Record<string, string> = {
+    [ContentDataOptionEnum.New_Opportunities]: 'opportunities',
+    [ContentDataOptionEnum.Challenges_and_Dangers]: 'challenges',
+    [ContentDataOptionEnum.View_Artifact]: 'artifact',
+  };
+
+  const prefix = categoryPrefixMap[category] || 'unknown';
+  const suffix = optionSuffixMap[option] || 'unknown';
+
+  return `${prefix}_${suffix}`;
 };

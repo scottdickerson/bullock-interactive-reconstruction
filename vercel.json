@@ -9,8 +9,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "env": {
-    "PUBLIC_GA_TRACKING_ID": "@PUBLIC_GA_TRACKING_ID"
-  }
+  ]
 }

@@ -5,12 +5,13 @@ import {
   isContentOption,
   type ContentOption,
   type ArtifactOption,
+  ContentDataOptionEnum,
 } from '../data/content';
 import closeIcon from '../assets/icon-close.svg?url';
 import zoomIcon from '../assets/zoom.svg?url';
-import type { Category } from '../utils/categories';
-import { getCategoryZoomImage, type ZoomOptionType } from '../utils/categories';
+import { Category, getCategoryZoomImage, type ZoomOptionType } from '../utils/categories';
 import ZoomModal from './ZoomModal';
+import { trackEvent, getHotspotEventName } from '../utils/analytics';
 
 /**
  * Props for the ExpandedContent component
@@ -62,6 +63,36 @@ const ExpandedContent = ({
     return 'artifact';
   };
 
+  // Map option to ContentDataOptionEnum value for event tracking
+  const getOptionEnumValue = (): string => {
+    if (isArtifactOption) {
+      return ContentDataOptionEnum.View_Artifact;
+    }
+    // Check imageUrl to determine option type
+    if (option.imageUrl?.includes('new-opportunities')) {
+      return ContentDataOptionEnum.New_Opportunities;
+    }
+    if (option.imageUrl?.includes('challenges-and-dangers')) {
+      return ContentDataOptionEnum.Challenges_and_Dangers;
+    }
+    // Default fallback
+    return ContentDataOptionEnum.View_Artifact;
+  };
+
+  const handleZoomOpenChange = (open: boolean) => {
+    if (open) {
+      // Track when zoom modal opens with category and option info
+      const baseEventName = getHotspotEventName(category, getOptionEnumValue());
+      trackEvent(`${baseEventName}_zoom_image_open`);
+      setIsZoomDialogOpen(true);
+    } else {
+      // Track when zoom modal closes with category and option info
+      const baseEventName = getHotspotEventName(category, getOptionEnumValue());
+      trackEvent(`${baseEventName}_zoom_image_closed`);
+      setIsZoomDialogOpen(false);
+    }
+  };
+
   const zoomImageUrl = getCategoryZoomImage(category, getOptionType());
 
   return (
@@ -90,7 +121,7 @@ const ExpandedContent = ({
           {option.imageUrl ? (
             <div
               className={classNames('relative')}
-              onClick={() => setIsZoomDialogOpen(true)}
+              onClick={() => handleZoomOpenChange(true)}
             >
               <img
                 src={option.imageUrl}
@@ -142,7 +173,7 @@ const ExpandedContent = ({
       </div>
       <ZoomModal
         isOpen={isZoomDialogOpen}
-        onOpenChange={setIsZoomDialogOpen}
+        onOpenChange={handleZoomOpenChange}
         imageUrl={zoomImageUrl}
         alt={option.title}
       />

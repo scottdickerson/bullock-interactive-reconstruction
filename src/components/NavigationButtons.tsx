@@ -46,10 +46,6 @@ const NavigationButtons = ({
   const languageButtonText =
     lang === 'es' ? t('common.english') : t('common.español');
 
-  const handleHomeClick = () => {
-    // Track session end when HOME button is clicked
-    trackEvent('experience_end');
-  };
 
   const handleLanguageToggle = () => {
     // Track language toggle event
@@ -81,7 +77,6 @@ const NavigationButtons = ({
             as="a"
             href={homeHref}
             className="flex items-center gap-2"
-            onClick={handleHomeClick}
           >
             <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
             {t('common.home')}
