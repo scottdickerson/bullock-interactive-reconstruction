@@ -20,7 +20,7 @@ const pathname = Astro.url.pathname;
 const categoryEnum = category ? slugToCategory(category) : null;
 const backgroundImage = categoryEnum
   ? `/category-background/${getCategoryBackground(categoryEnum)}`
-  : '/background.png';
+  : '/PurpleBackground.gif';
 
 // Get GA tracking ID from environment variable
 const gaTrackingId = import.meta.env.PUBLIC_GA_TRACKING_ID;
@@ -54,7 +54,7 @@ gtag('js', new Date());`}
     )}
   </head>
   <body >
-    <main class="pl-32 pr-16 h-svh text-pretty overflow-hidden">
+    <main class="px-32 h-svh text-pretty overflow-hidden">
     <Analytics client:load />
     <ClientRouter />
     <div

@@ -78,7 +78,7 @@ const Woodblocks = () => {
         style={{
           viewTransitionName: `community-leadership-woodblock${viewTransitionSuffix}`,
         }}
-        className="mix-blend-multiply max-w-[800px] translate-x-[210px] transition-all duration-1000 ease-in-out"
+        className="mix-blend-multiply max-w-[800px] translate-x-[200px] translate-y-[100px] transition-all duration-1000 ease-in-out"
         id="community-leadership-woodblock"
       >
         <img

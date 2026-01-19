@@ -15,7 +15,7 @@ const meta: Meta<typeof Pullscreen> = {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: 'url(/background.png)',
+            backgroundImage: 'url(/PurpleBackground.gif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

@@ -143,7 +143,7 @@ const ExpandedContent = ({
         </div>
         {isContentOption(option) && (
           <>
-            <h4 className="text-details font-bold text-2xl mb-6 italic leading-[1.2]">
+            <h4 className="text-details font-bold text-2xl mb-6 leading-[1.2]">
               {option.description}
             </h4>
             <p className="text-details leading-snug text-xl font-medium">

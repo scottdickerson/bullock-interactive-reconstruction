@@ -38,7 +38,7 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
   const langPrefix = currentLang === 'es' ? '/es' : '';
 
   // Use server-side translations if provided, otherwise use client-side translations
-  const title = translations?.pullscreen?.title || t('pullscreen.title');
+  // const title = translations?.pullscreen?.title || t('pullscreen.title');
   const subtitle =
     translations?.pullscreen?.subtitle || t('pullscreen.subtitle');
   const description =
@@ -59,14 +59,14 @@ const Pullscreen = ({ translations, lang: langProp }: PullscreenProps = {}) => {
           className={currentLang === 'es' ? 'max-w-[1200px]' : 'max-w-[934px]'}
         >
           {/* Title */}
-          <div className="text-center mb-8">
+          {/* <div className="text-center mb-8">
             <h1 className="text-[100px] leading-none font-extrabold text-yellow drop-shadow-lg animate-pulse2">
               {title.split(' ').slice(0, 1).join(' ')}
             </h1>
             <h1 className="text-[100px] leading-none font-extrabold text-yellow drop-shadow-lg animate-pulse2">
               {title.split(' ').slice(1).join(' ')}
             </h1>
-          </div>
+          </div> */}
 
           {/* Subtitle */}
           <p className="text-3xl font-semibold text-pullscreen-text  mb-8 ">
