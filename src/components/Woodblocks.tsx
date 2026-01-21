@@ -1,6 +1,6 @@
-import educationWoodblock from '../assets/education-woodblock.png?url';
-import politicsWoodblock from '../assets/politics-woodblock.png?url';
-import communityLeadershipWoodblock from '../assets/community-leadership-woodblock.png?url';
+import educationWoodblock from '../assets/education-woodblock.webp?url';
+import politicsWoodblock from '../assets/politics-woodblock.webp?url';
+import communityLeadershipWoodblock from '../assets/community-leadership-woodblock.webp?url';
 import { useEffect, useState, useRef } from 'react';
 
 /**
@@ -52,7 +52,7 @@ const Woodblocks = () => {
         <img
           src={politicsWoodblock}
           alt="Politics Woodblock"
-          className="w-full h-full object-cover scale-x-[-1]"
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -62,7 +62,7 @@ const Woodblocks = () => {
         style={{
           viewTransitionName: `education-woodblock${viewTransitionSuffix}`,
         }}
-        className="mix-blend-multiply scale-175 transition-all duration-1000 ease-in-out"
+        className="mix-blend-multiply scale-105 translate-x-[50px] transition-all duration-1000 ease-in-out"
         id="education-woodblock"
       >
         <img
@@ -78,7 +78,7 @@ const Woodblocks = () => {
         style={{
           viewTransitionName: `community-leadership-woodblock${viewTransitionSuffix}`,
         }}
-        className="mix-blend-multiply max-w-[800px] translate-x-[200px] translate-y-[100px] transition-all duration-1000 ease-in-out"
+        className="mix-blend-multiply max-w-[800px] transition-all duration-1000 ease-in-out"
         id="community-leadership-woodblock"
       >
         <img
