@@ -46,7 +46,6 @@ const NavigationButtons = ({
   const languageButtonText =
     lang === 'es' ? t('common.english') : t('common.español');
 
-
   const handleLanguageToggle = () => {
     // Track language toggle event
     const targetLang = lang === 'es' ? 'en' : 'es';
@@ -76,7 +75,7 @@ const NavigationButtons = ({
           <Button
             as="a"
             href={homeHref}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 max-h-[56px]"
           >
             <img src={homeIcon} alt="Home" className="w-[29px] h-[29px]" />
             {t('common.home')}
@@ -84,7 +83,12 @@ const NavigationButtons = ({
         )}
       </div>
       {spanishHref && (
-        <Button as="a" href={spanishHref} onClick={handleLanguageToggle}>
+        <Button
+          as="a"
+          href={spanishHref}
+          onClick={handleLanguageToggle}
+          className="max-h-[56px]"
+        >
           {languageButtonText}
         </Button>
       )}

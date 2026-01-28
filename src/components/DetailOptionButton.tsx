@@ -42,8 +42,8 @@ const DetailOptionButton = ({
   onClose,
   category,
 }: DetailOptionButtonProps) => {
-  // Top positions for each button: first = 168px, second = 286px, third = 395px
-  const topPositions = [168, 286, 395];
+  // Top positions for each button: first = 168px, second = 282px, third = 395px
+  const topPositions = [168, 282, 395];
   const collapsedTop = `${topPositions[index] || 168}px`;
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);

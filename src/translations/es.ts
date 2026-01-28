@@ -3,8 +3,8 @@ export const es = {
     start: 'COMENZAR',
     back: 'ATRÁS',
     home: 'INICIO',
-    español: 'Español',
-    english: 'English',
+    español: 'ESPAÑOL',
+    english: 'ENGLISH',
     keepReading: 'SEGUIR LEYENDO',
   },
   pullscreen: {
