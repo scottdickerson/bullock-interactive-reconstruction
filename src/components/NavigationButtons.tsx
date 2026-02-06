@@ -87,7 +87,7 @@ const NavigationButtons = ({
           as="a"
           href={spanishHref}
           onClick={handleLanguageToggle}
-          className="max-h-[56px]"
+          className="max-h-[56px] translate-x-4"
         >
           {languageButtonText}
         </Button>
