@@ -9,7 +9,11 @@ import {
 } from '../data/content';
 import closeIcon from '../assets/icon-close.svg?url';
 import zoomIcon from '../assets/zoom.svg?url';
-import { Category, getCategoryZoomImage, type ZoomOptionType } from '../utils/categories';
+import {
+  Category,
+  getCategoryZoomImage,
+  type ZoomOptionType,
+} from '../utils/categories';
 import ZoomModal from './ZoomModal';
 import { trackEvent, getHotspotEventName } from '../utils/analytics';
 
@@ -166,7 +170,7 @@ const ExpandedContent = ({
       >
         <Button
           onClick={onClose}
-          className="py-2 px-4 mx-auto z-100 cursor-pointer"
+          className="pt-5 pb-3 pl-3 pr-3 mx-auto z-100 cursor-pointer"
         >
           <img src={closeIcon} alt="Close" />
         </Button>
