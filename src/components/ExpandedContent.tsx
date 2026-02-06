@@ -158,7 +158,7 @@ const ExpandedContent = ({
       </div>
       <div
         className={classNames(
-          'absolute bottom-14 w-full flex justify-center',
+          'absolute bottom-24 w-full flex justify-center',
           className
         )}
         style={{
