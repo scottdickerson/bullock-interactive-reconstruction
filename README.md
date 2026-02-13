@@ -87,7 +87,7 @@ This project uses [Chromatic](https://www.chromatic.com) for Storybook-based vis
 - React Router DOM
 - CSS View Transitions API
 - Vite (build tool)
-- Google Analytics 4 (gtag.js) - See [Google Analytics Documentation](src/GoogleAnalytics.mdx) for implementation details
+- Google Analytics 4 (gtag.js) - See [Google Analytics Documentation](docs/GoogleAnalytics.mdx) for implementation details
 
 ## Browser Support
 
