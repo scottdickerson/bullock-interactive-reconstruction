@@ -73,6 +73,12 @@ npm run lint
 npm run format
 ```
 
+## Chromatic (Storybook visual testing)
+
+This project uses [Chromatic](https://www.chromatic.com) for Storybook-based visual testing and UI review. Builds run on push/PR to `main` via GitHub Actions.
+
+- **Chromatic project:** [Open in Chromatic](https://www.chromatic.com/library?appId=693f5dc2d1bf9dd9b80457a3) — sign in to see the project’s builds and review UI changes.
+
 ## Technologies Used
 
 - React 19
