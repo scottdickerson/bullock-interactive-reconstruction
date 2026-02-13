@@ -54,6 +54,8 @@ An interactive web application showcasing the Reconstruction era in Texas, built
 
 ## Development
 
+For detailed **Windows installation** (Node/npm, build, startup tasks, and serving with npx), see [docs/INSTALL-WINDOWS.md](docs/INSTALL-WINDOWS.md). For serving with **IIS**, see [docs/INSTALL-WINDOWS-IIS.md](docs/INSTALL-WINDOWS-IIS.md). To **edit on-screen copy** (and rebuild afterward), see [docs/EDITING-COPY.md](docs/EDITING-COPY.md).
+
 ```bash
 # Install dependencies
 npm install
