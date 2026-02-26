@@ -22,6 +22,8 @@ interface DetailOptionButtonProps {
   onClose: () => void;
   /** The current category */
   category: Category;
+  /** The current language */
+  language?: string;
 }
 
 /**
@@ -41,6 +43,7 @@ const DetailOptionButton = ({
   onClick,
   onClose,
   category,
+  language,
 }: DetailOptionButtonProps) => {
   // Top positions for each button: first = 168px, second = 282px, third = 395px
   const topPositions = [168, 282, 395];
@@ -132,6 +135,7 @@ const DetailOptionButton = ({
         option={option}
         onClose={onClose}
         category={category}
+        language={language}
       />
     </div>
   );

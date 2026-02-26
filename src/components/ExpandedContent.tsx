@@ -29,6 +29,8 @@ interface ExpandedContentProps extends React.HTMLAttributes<HTMLDivElement> {
   isExpanded: boolean;
   /** The current category */
   category: Category;
+  /** The current language */
+  language?: string;
 }
 
 /**
@@ -45,6 +47,7 @@ const ExpandedContent = ({
   onClose,
   isExpanded,
   category,
+  language,
   ...props
 }: ExpandedContentProps) => {
   const [isZoomDialogOpen, setIsZoomDialogOpen] = useState(false);
@@ -87,12 +90,16 @@ const ExpandedContent = ({
     if (open) {
       // Track when zoom modal opens with category and option info
       const baseEventName = getHotspotEventName(category, getOptionEnumValue());
-      trackEvent(`${baseEventName}_zoom_image_open`);
+      trackEvent(
+        `${baseEventName}_zoom_image_open${language === 'es' ? '_es' : ''}`
+      );
       setIsZoomDialogOpen(true);
     } else {
       // Track when zoom modal closes with category and option info
       const baseEventName = getHotspotEventName(category, getOptionEnumValue());
-      trackEvent(`${baseEventName}_zoom_image_closed`);
+      trackEvent(
+        `${baseEventName}_zoom_image_closed${language === 'es' ? '_es' : ''}`
+      );
       setIsZoomDialogOpen(false);
     }
   };

@@ -65,6 +65,7 @@ const InactivityModal = ({
       setIsVisible(true);
       // Start auto-close timer when modal appears
       autoCloseTimerRef.current = setTimeout(() => {
+        trackEvent('InactivityTimeout');
         window.location.href = homePath;
       }, autoCloseTimeout);
     }, inactivityTimeout);

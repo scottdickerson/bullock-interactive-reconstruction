@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CategoryTag from '../components/CategoryTag';
 import DetailOptionButton from '../components/DetailOptionButton';
-import {
-  getContentData,
-  type ContentData,
-} from '../data/content';
+import { getContentData, type ContentData } from '../data/content';
 import { slugToCategory, Category } from '../utils/categories';
 import { trackEvent, getHotspotEventName } from '../utils/analytics';
 
@@ -17,6 +14,8 @@ interface DetailScreenProps {
   category?: string;
   /** Initial content data from server-side rendering (optional) */
   initialContentData?: ContentData;
+  /** The language of the user */
+  language?: string;
 }
 
 /**
@@ -30,6 +29,7 @@ interface DetailScreenProps {
 const DetailScreen = ({
   category: categorySlug = 'agriculture',
   initialContentData,
+  language,
 }: DetailScreenProps) => {
   const { t } = useTranslation();
   const [expandedOption, setExpandedOption] = useState<
@@ -45,7 +45,7 @@ const DetailScreen = ({
       setExpandedOption(null);
     } else {
       // Expanding - track the event
-      const eventName = getHotspotEventName(category, option);
+      const eventName = getHotspotEventName(category, option, language);
       trackEvent(eventName);
       setExpandedOption(option);
     }
@@ -89,6 +89,7 @@ const DetailScreen = ({
               }
               onClose={handleClose}
               category={category}
+              language={language}
             />
           ))}
         </div>

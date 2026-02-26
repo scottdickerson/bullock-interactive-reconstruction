@@ -24,19 +24,18 @@ export const initGA = () => {
   // Check if gtag is already loaded (from Layout.astro script tag)
   if (typeof window !== 'undefined' && window.gtag) {
     window.dataLayer.push({
-      'language': 'es',
+      language: 'es',
     });
     // Generate a new client_id (format: timestamp.random)
-  const newClientId = `${Date.now()}.${Math.random().toString(36).substring(2, 15)}`;
+    const newClientId = `${Date.now()}.${Math.random().toString(36).substring(2, 15)}`;
 
-  // Set new client_id in dataLayer to trigger a new session
-  window.gtag('config', GA_TRACKING_ID, {
-    client_id: newClientId,
-    user_id: newClientId,
-  });
+    // Set new client_id in dataLayer to trigger a new session
+    window.gtag('config', GA_TRACKING_ID, {
+      client_id: newClientId,
+      user_id: newClientId,
+    });
   }
 };
-
 
 /**
  * Track a custom event in Google Analytics 4
@@ -60,7 +59,7 @@ export const setLanguage = (language: string) => {
   }
 
   window.dataLayer.push({
-    'language': language,
+    language: language,
   });
 };
 
@@ -81,7 +80,7 @@ export const resetUserSession = () => {
   // Delete GA4 measurement ID specific cookies (_ga_*)
   // Iterate through all cookies to find pattern matches
   const allCookies = document.cookie.split(';');
-  allCookies.forEach((cookie) => {
+  allCookies.forEach(cookie => {
     const cookieName = cookie.split('=')[0].trim();
     if (cookieName.startsWith('_ga_')) {
       Cookies.remove(cookieName, { path: '/' });
@@ -109,7 +108,8 @@ export const resetUserSession = () => {
  */
 export const getHotspotEventName = (
   category: Category,
-  option: string
+  option: string,
+  language?: string
 ): string => {
   // Map category enum to event prefix
   const categoryPrefixMap: Record<Category, string> = {
@@ -129,6 +129,7 @@ export const getHotspotEventName = (
 
   const prefix = categoryPrefixMap[category] || 'unknown';
   const suffix = optionSuffixMap[option] || 'unknown';
+  const languageSuffix = language === 'es' ? '_es' : '';
 
-  return `${prefix}_${suffix}`;
+  return `${prefix}_${suffix}${languageSuffix}`;
 };

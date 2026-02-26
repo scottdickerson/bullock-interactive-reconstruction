@@ -47,7 +47,7 @@ const title = `Reconstruction Era Texans - ${categoryEnum}`;
 
 <Layout title={title} category={category} lang={lang}>
   <I18nProvider lang={lang} client:load>
-    <DetailScreen category={category || 'agriculture'} initialContentData={contentData} client:load />
+    <DetailScreen category={category || 'agriculture'} language={lang} initialContentData={contentData} client:load />
   </I18nProvider>
 </Layout>
 
