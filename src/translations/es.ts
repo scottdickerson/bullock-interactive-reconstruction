@@ -43,7 +43,7 @@ export const es = {
           content:
             'Los terratenientes explotaban la mano de obra de los texanos negros para limitar su libertad financiera. Las leyes de aprendizaje y arrendamiento agrícola permitían a los terratenientes atrapar a los trabajadores en contratos abusivos que los ataban a la tierra. Al ser propietario de su terreno, Ransom conservaba todas las ganancias de su trabajo. El éxito financiero permitió a Ransom y Sarah mejorar la calidad de vida y la educación de su familia.',
           image:
-            'Familia y carreta de bueyes frente a la casa, ca. 1888 // Cortesía de The Cook Collection, The Valentine',
+            'Familia y carreta de bueyes frente a la casa, ca. 1888. Imagen cortesía de The Cook Collection, The Valentine',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -52,12 +52,12 @@ export const es = {
           content:
             'Después de la muerte de Ransom, Sarah y sus hijos permanecieron en la granja durante cuatro años más. Pero la vida en el Texas rural ofrecía pocas opciones de empleo y un mayor riesgo de exposición a la violencia racial. Los legisladores trabajaban activamente para eliminar las protecciones para los texanos negros. Finalmente, la familia Williams se mudó a una colonia de libertad en el este de Austin.',
           image:
-            'Centro de Austin, 1920 // Cortesía del Cento de Historia de Austin, Biblioteca Pública de Austin',
+            'Centro de Austin, 1920. Imagen cortesía del Cento de Historia de Austin, Biblioteca Pública de Austin',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
           image:
-            'Ransom registró su marca de ganado, "RA", en el condado de Travis en abril de 1872. Este fragmento encontrado en la granja de los Williams coincide con la marca registrada en el condado. Marca del rancho de Ransom // Cortesía del Laboratorio de Investigación Arqueológica de Texas, Universidad de Texas en Austin',
+            'Ransom registró su marca de ganado, "RA", en el condado de Travis en abril de 1872. Este fragmento encontrado en la granja de los Williams coincide con la marca registrada en el condado. Marca del rancho de Ransom. Imagen cortesía del Laboratorio de Investigación Arqueológica de Texas, Universidad de Texas en Austin',
         },
       },
     },
@@ -73,7 +73,7 @@ export const es = {
           content:
             'Los texanos negros debían navegar espacios segregados y encontrar oportunidades laborales justas. Se reunían en iglesias fundadas por y para las comunidades negras. Como predicador y respetado líder comunitario, Duval ayudó a otros a encontrar apoyo, educación y empleo.',
           image:
-            'Iglesia Bautista Mount Zion, San Antonio, Texas // Cortesía de Colecciones Especiales de UTSA, San Antonio',
+            'Iglesia Bautista Mount Zion, San Antonio, Texas. Imagen cortesía de Colecciones Especiales de UTSA, San Antonio',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -82,12 +82,12 @@ export const es = {
           content:
             'Los Códigos Negros fueron la base de las leyes de segregación Jim Crow. A pesar de ser dueño de su propio negocio, Duval se vio obligado a seguir estas reglas para evitar la violencia. Los clientes blancos entraban a su barbería por la puerta principal. Los clientes negros y tejanos lo hacían por la puerta trasera, desde el callejón.',
           image:
-            'Negocios en la cuadra 500 de East Commerce Street, San Antonio, Texas, 1917 // Cortesía de Colecciones Especiales de UTSA, San Antonio',
+            'Negocios en la cuadra 500 de East Commerce Street, San Antonio, Texas, 1917. Imagen cortesía de Colecciones Especiales de UTSA, San Antonio',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
           image:
-            'Esta fotografía muestra la calle Soledad cerca de la Plaza Principal, el área donde Duval operaba su barbería. Calle Soledad, San Antonio, Texas, ca. 1870 // Cortesía de Colecciones Especiales de UTSA, San Antonio',
+            'Esta fotografía muestra la calle Soledad cerca de la Plaza Principal, el área donde Duval operaba su barbería. Calle Soledad, San Antonio, Texas, ca. 1870. Imagen cortesía de Colecciones Especiales de UTSA, San Antonio',
         },
       },
     },
@@ -103,7 +103,7 @@ export const es = {
           content:
             'Richard Allen fue uno de los primeros hombres negros que sirvieron como representantes en la Legislatura Estatal de Texas. Promovió leyes para aumentar el acceso a la educación y garantizar fondos de pensiones para veteranos sin importar la raza. Allen también contribuyó a dar forma a la infraestructura de Texas al liderar el Comité de Caminos y Puentes.',
           image:
-            'Retrato de Richard Allen // Cortesía de la Colección General de Fotografías, Colecciones Especiales de UTSA, San Antonio',
+            'Retrato de Richard Allen. Imagen cortesía de la Colección General de Fotografías, Colecciones Especiales de UTSA, San Antonio',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -112,12 +112,12 @@ export const es = {
           content:
             'Richard Allen fue reelegido para la Decimotercera Legislatura en 1873. Gustave Cook, su oponente blanco, afirmó que los votantes negros de Allen no estaban debidamente registrados. La Legislatura del Estado decidió entonces darle el escaño a Cook. En los años siguientes, la discriminación sancionada por el estado y la violencia racial aumentaron. Para 1879, Allen instó públicamente a los texanos negros a mudarse a Kansas en busca de seguridad y mejores oportunidades.',
           image:
-            'Distrito Histórico de Nicodemus, Condado de Graham, KS // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
+            'Distrito Histórico de Nicodemus, Condado de Graham, KS. Imagen cortesía de la Biblioteca del Congreso, Washington, D.C.',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
           image:
-            'Allen firmó este juramento mientras servía en la Duodécima Legislatura. Se requería que los legisladores juraran que no habían participado en ninguna insurrección mientras ocupaban el cargo. Juramento de cargo, 26 de abril de 1870 // Cortesía de la Comisión de Bibliotecas y Archivos del Estado de Texas, Austin',
+            'Allen firmó este juramento mientras servía en la Duodécima Legislatura. Se requería que los legisladores juraran que no habían participado en ninguna insurrección mientras ocupaban el cargo. Juramento de cargo, 26 de abril de 1870. Imagen cortesía de la Comisión de Bibliotecas y Archivos del Estado de Texas, Austin',
         },
       },
     },
@@ -133,7 +133,7 @@ export const es = {
           content:
             'La ley estatal de Texas prohibía a las personas esclavizadas aprender a leer o escribir. Los esclavizadores temían que la educación hiciera más difícil controlar a las personas que mantenían cautivas. Después de 1865, la Oficina de Libertos lideró los esfuerzos para fundar escuelas para los texanos negros. Los registros de la Oficina muestran que para 1870 había 150 escuelas que inscribían a 9,086 estudiantes negros en todo el estado.',
           image:
-            'Escuela afroamericana en Diboll, Texas, con el maestro J. W. Hogg y sus estudiantes // Cortesía de The History Center',
+            'Escuela afroamericana en Diboll, Texas, con el maestro J. W. Hogg y sus estudiantes. Imagen cortesía de The History Center',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -142,12 +142,12 @@ export const es = {
           content:
             'Los legisladores blancos crearon leyes conocidas como los Códigos Negros para restringir los derechos de los texanos negros. Estas leyes también afectaban la educación. Las escuelas negras no podían acceder al fondo estatal para escuelas públicas. Los estudiantes negros no podían asistir a instituciones para blancos. Estas leyes establecieron escuelas segregadas. En consecuencia, se asignaron menos recursos a las escuelas que atendían a estudiantes negros y de ascendencia mexicana.',
           image:
-            'Grupo de estudiantes negros, década de 1870 // Cortesía de las Bibliotecas de la Universidad del Norte de Texas, The Portal to Texas History, con crédito al Centro de Historia de Austin, Biblioteca Pública de Austin',
+            'Grupo de estudiantes negros, década de 1870. Imagen cortesía de las Bibliotecas de la Universidad del Norte de Texas, The Portal to Texas History, con crédito al Centro de Historia de Austin, Biblioteca Pública de Austin',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
           image:
-            'Este informe muestra que Smith inicialmente se enfocó en enseñar a sus 28 estudiantes (19 niñas y 9 niños) a deletrear, leer y escribir. Informe de la Escuela para Libertos, 1 de junio de 1866 // Cortesía del Museo Nacional de Historia y Cultura Afroamericana',
+            'Este informe muestra que Smith inicialmente se enfocó en enseñar a sus 28 estudiantes (19 niñas y 9 niños) a deletrear, leer y escribir. Informe de la Escuela para Libertos, 1 de junio de 1866. Imagen cortesía del Museo Nacional de Historia y Cultura Afroamericana',
         },
       },
     },
@@ -163,7 +163,7 @@ export const es = {
           content:
             'La Convención Constitucional de Texas de 1866 otorgó a los texanos negros el derecho a firmar contratos, demandar y poseer propiedades. Thompson ejerció estos derechos al establecer su propio negocio exitoso. A medida que aumentaba el valor de su propiedad en la calle Elm, Thompson enfrentó múltiples demandas relacionadas con su propiedad. Ganó la última demanda en 1884 y conservó el título de su terreno.',
           image:
-            'Calle Elm, Dallas, Texas // Cortesía de la Biblioteca DeGolyer, Universidad Metodista del Sur',
+            'Calle Elm, Dallas, Texas. Imagen cortesía de la Biblioteca DeGolyer, Universidad Metodista del Sur',
         },
         challengesAndDangers: {
           title: 'Desafíos y Peligros',
@@ -172,12 +172,12 @@ export const es = {
           content:
             'Mientras Thompson prosperaba, otras lavanderas negras eran injustamente mal remuneradas por su arduo trabajo. La discriminación salarial se utilizaba como una herramienta de opresión. Pero los texanos negros crearon sus propios caminos hacia adelante. En 1877, trabajadoras domésticas negras en Galveston organizaron una huelga para exigir mejores salarios. Lavanderas, cocineras y sirvientas se unieron para buscar un cambio. Su acción colectiva fue parte de un creciente movimiento obrero en Texas.',
           image:
-            'Mujer afroamericana lavando ropa // Cortesía de la Biblioteca del Congreso, Washington, D.C.',
+            'Mujer afroamericana lavando ropa. Imagen cortesía de la Biblioteca del Congreso, Washington, D.C.',
         },
         viewArtifact: {
           title: 'Ver Artefacto',
           image:
-            'Esta entrada reconoce la compra conjunta de terreno por parte de Isaac y Hope Thompson a W. L. y Lou Williams. La propiedad permaneció en posesión de Hope, quien continuó desarrollando sus inversiones después de que Isaac se marchara. Índice de Escrituras del Condado de Dallas, vol. 53 pág. 210, 29 de abril de 1871 // Cortesía del Departamento de Registros del Condado de Dallas',
+            'Esta entrada reconoce la compra conjunta de terreno por parte de Isaac y Hope Thompson a W. L. y Lou Williams. La propiedad permaneció en posesión de Hope, quien continuó desarrollando sus inversiones después de que Isaac se marchara. Índice de Escrituras del Condado de Dallas, vol. 53 pág. 210, 29 de abril de 1871. Imagen cortesía del Departamento de Registros del Condado de Dallas',
         },
       },
     },
